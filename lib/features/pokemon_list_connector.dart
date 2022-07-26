@@ -11,9 +11,9 @@ class PokemonListConnector extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return StoreConnector<AppState, PokemonListVm>(
-        vm: () => PokemonListVmFactory(),
-        onInit: (store) async => store.dispatch(GetPokemonList()),
-        builder: (context, vm) => PokemonListPage(name: vm.name),
-        );
+      vm: () => PokemonListVmFactory(),
+      onInit: (store) async => store.dispatch(GetPokemonList()),
+      builder: (context, vm) => PokemonListPage(name: vm.name),
+    );
   }
 }

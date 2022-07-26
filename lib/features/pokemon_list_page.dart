@@ -3,6 +3,7 @@ import 'package:pokedex/utils/constant.dart';
 
 class PokemonListPage extends StatelessWidget {
   const PokemonListPage({super.key, required this.name});
+
   final String name;
 
   @override
@@ -22,7 +23,10 @@ class PokemonListPage extends StatelessWidget {
                   "Lorem ipsum",
                   style: Theme.of(context).textTheme.headline5,
                 ),
-                SizedBox(width: 100, height: 100, child: Image.network(pokeImage),
+                SizedBox(
+                  width: 100,
+                  height: 100,
+                  child: Image.network(pokeImage),
                 ),
               ],
             ),

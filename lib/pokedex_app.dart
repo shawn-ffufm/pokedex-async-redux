@@ -7,6 +7,7 @@ class PokedexApp extends StatelessWidget {
   const PokedexApp({super.key, required this.store});
 
   final Store<AppState> store;
+
   @override
   Widget build(BuildContext context) {
     return StoreProvider(

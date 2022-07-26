@@ -7,11 +7,10 @@ import 'package:pokedex/state/app_state.dart';
 import 'package:path_provider/path_provider.dart';
 
 class AppPersistor extends Persistor<AppState> {
-
   @override
   Future<AppState> readState() async {
     final file = await _getFile();
-    if(file.existsSync()){
+    if (file.existsSync()) {
       final String data = await file.readAsString();
       return compute(stateDecode, data);
     }
@@ -30,12 +29,13 @@ class AppPersistor extends Persistor<AppState> {
   }) async {
     /// TODO: Put here the code to save the state to disk.
   }
+
   Future<File> _getFile() async {
     final dir = await getApplicationDocumentsDirectory();
     return File('${dir.path}/state.json');
   }
 
-  String stateEncode(AppState st){
+  String stateEncode(AppState st) {
     final Map<String, dynamic> json = st.toJson();
     return jsonEncode(json);
   }
