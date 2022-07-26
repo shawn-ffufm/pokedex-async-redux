@@ -23,8 +23,6 @@ jobs:
         with:
           flutter-version: 'any'
           channel: 'stable'
-          cache: true
-          cache-key: '123'
           
       - name: Flutter version
         run: flutter --version
