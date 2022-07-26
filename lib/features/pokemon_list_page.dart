@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:pokedex/utils/constant.dart';
 
 class PokemonListPage extends StatelessWidget {
   const PokemonListPage({super.key, required this.name});
@@ -25,7 +26,7 @@ class PokemonListPage extends StatelessWidget {
                   width: 100,
                   height: 100,
                   child:
-                      Image.network("https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/1.png"),
+                      Image.network(pokeImage),
                 ),
               ],
             ),

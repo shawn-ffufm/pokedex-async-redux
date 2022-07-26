@@ -13,10 +13,7 @@ class PokemonListConnector extends StatelessWidget {
     return StoreConnector<AppState, PokemonListVm>(
         vm: () => PokemonListVmFactory(),
         onInit: (store) async => store.dispatch(GetPokemonList()),
-        builder: (context, vm) {
-          return PokemonListPage(
-            name: vm.name,
-          );
-        });
+        builder: (context, vm) => PokemonListPage(name: vm.name),
+        );
   }
 }
