@@ -20,6 +20,10 @@ jobs:
 
       - name: Install flutter
         uses: subosito/flutter-action@v2
+        with:
+          channel: stable
+          cache: true
+          architecture: x64
           
       - name: Flutter version
         run: flutter --version
