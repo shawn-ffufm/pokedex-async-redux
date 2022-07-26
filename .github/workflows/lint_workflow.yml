@@ -8,6 +8,10 @@ name: Lint Checks
 on:
   pull_request:
     branches: '**'
+    
+concurrency:
+  group: review-${{ github.base_ref }}-${{ github.head_ref }}
+  cancel-in-progress: true
 
 jobs:
   tests:
@@ -17,20 +21,12 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v3
-        with:
-          fetch-depth: 0
-          
-      - name: Setup Java
-        uses: actions/setup-java@v3
-        with:
-          distribution: 'zulu'
-          java-version: '11'
 
-      - name: Setup Flutter
+      - name: Install flutter
         uses: subosito/flutter-action@v2
         with:
-          channel: 'stable'
-          cache: true
+          channel: stable
+          architecture: x64
           
       - name: Flutter version
         run: flutter --version
