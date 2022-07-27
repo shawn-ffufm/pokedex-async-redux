@@ -14,7 +14,7 @@ class PokemonListPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text(str.pokedexTitle),
+        title: const Text(str.pokedexTitle)
       ),
       body: GridView.count(
         crossAxisCount: 2,
