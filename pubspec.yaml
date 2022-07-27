@@ -13,15 +13,21 @@ dependencies:
     sdk: flutter
 
   cupertino_icons: ^1.0.2
+
   # architecture
   async_redux: ^15.0.0
   dartx: ^1.1.0
   dio: ^4.0.6
+
   # builder
   freezed_annotation: ^2.1.0
   json_annotation: ^4.6.0
+
   # navigation
   go_router: ^4.1.0
+
+  # file
+  path_provider: ^2.0.11
 
 dev_dependencies:
   flutter_test:
