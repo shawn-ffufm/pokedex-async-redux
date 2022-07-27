@@ -13,6 +13,7 @@ Future<void> main() async {
     initialState: initialState,
     persistor: persistor,
     actionObservers: [ConsoleActionObserver<AppState>()],
+
     /// TODO: this should be not present on the release mode
   );
 

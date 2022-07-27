@@ -2,7 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:pokedex/utils/strings.dart';
 
 class PokemonListPage extends StatelessWidget {
-  const PokemonListPage({super.key, required this.name});
+  const PokemonListPage({
+    super.key,
+    required this.name,
+  });
 
   final String name;
 
@@ -23,6 +26,7 @@ class PokemonListPage extends StatelessWidget {
                   dummyString,
                   style: Theme.of(context).textTheme.headline5,
                 ),
+
                 /// TODO: create a reusable widget for loading the image
                 SizedBox(
                   width: 100,
