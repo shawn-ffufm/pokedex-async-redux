@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:pokedex/utils/strings.dart' as str;
+import 'package:pokedex/utils/constant.dart' as con;
 
 class PokemonListPage extends StatelessWidget {
   const PokemonListPage({
@@ -29,9 +30,9 @@ class PokemonListPage extends StatelessWidget {
 
                 /// TODO: create a reusable widget for loading the image
                 SizedBox(
-                  width: 100,
-                  height: 100,
-                  child: Image.network(str.pokeImage),
+                  width: con.hundred,
+                  height: con.hundred,
+                  child: Image.network(str.pokeImage)
                 ),
               ],
             ),
