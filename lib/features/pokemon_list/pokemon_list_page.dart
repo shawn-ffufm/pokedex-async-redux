@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:pokedex/utils/strings.dart';
+import 'package:pokedex/utils/strings.dart' as str;
 
 class PokemonListPage extends StatelessWidget {
   const PokemonListPage({
@@ -13,7 +13,7 @@ class PokemonListPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text(pokedexTitle),
+        title: const Text(str.pokedexTitle),
       ),
       body: GridView.count(
         crossAxisCount: 2,
@@ -23,7 +23,7 @@ class PokemonListPage extends StatelessWidget {
               children: <Widget>[
                 /// TODO: show information that was gathered from api
                 Text(
-                  dummyString,
+                  str.dummyString,
                   style: Theme.of(context).textTheme.headline5,
                 ),
 
@@ -31,7 +31,7 @@ class PokemonListPage extends StatelessWidget {
                 SizedBox(
                   width: 100,
                   height: 100,
-                  child: Image.network(pokeImage),
+                  child: Image.network(str.pokeImage),
                 ),
               ],
             ),

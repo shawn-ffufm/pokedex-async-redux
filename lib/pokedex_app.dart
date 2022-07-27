@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:pokedex/features/pokemon_list/pokemon_list_connector.dart';
-import 'package:pokedex/utils/strings.dart';
+import 'package:pokedex/utils/strings.dart' as str;
 
 class PokedexApp extends StatelessWidget {
   const PokedexApp({Key? key}) : super(key: key);
@@ -9,7 +9,7 @@ class PokedexApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return const MaterialApp(
-      title: pokedexTitle,
+      title: str.pokedexTitle,
       home: PokemonListConnector(),
     );
   }
