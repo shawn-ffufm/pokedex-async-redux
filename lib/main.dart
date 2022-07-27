@@ -13,9 +13,8 @@ Future<void> main() async {
     initialState: initialState,
     persistor: persistor,
     actionObservers: [ConsoleActionObserver<AppState>()],
-
     /// TODO: this should be not present on the release mode
   );
 
-  runApp(PokedexApp(store: store));
+  runApp(StoreProvider<AppState>(store: store, child: const PokedexApp()));
 }

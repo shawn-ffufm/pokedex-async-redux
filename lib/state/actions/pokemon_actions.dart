@@ -1,10 +1,11 @@
 import 'package:async_redux/async_redux.dart';
 import 'package:pokedex/state/app_state.dart';
 
-class GetPokemonList extends ReduxAction<AppState> {
+/// This action will be used to generate 20 Pokemon at a time.
+class GetPokemonAction extends ReduxAction<AppState> {
   /// TODO: Make a reduce function that will return 20 pokemons to the state
   @override
-  Future<AppState> reduce() async {
+  AppState? reduce() {
     return state.copyWith(name: "lorem ipsum");
   }
 }
