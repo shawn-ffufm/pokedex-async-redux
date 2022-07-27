@@ -13,9 +13,7 @@ class PokemonListPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const Text(str.pokedexTitle)
-      ),
+      appBar: AppBar(title: const Text(str.pokedexTitle)),
       body: GridView.count(
         crossAxisCount: 2,
         children: List.generate(20, (index) {
@@ -29,11 +27,7 @@ class PokemonListPage extends StatelessWidget {
                 ),
 
                 /// TODO: create a reusable widget for loading the image
-                SizedBox(
-                  width: con.hundred,
-                  height: con.hundred,
-                  child: Image.network(str.pokeImage)
-                ),
+                SizedBox(width: con.hundred, height: con.hundred, child: Image.network(str.pokeImage)),
               ],
             ),
           );
