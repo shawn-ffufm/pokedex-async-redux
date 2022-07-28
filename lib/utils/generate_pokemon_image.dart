@@ -1,4 +1,6 @@
+import 'package:pokedex/utils/constant.dart' as k;
+
 String generateImage(int index) {
   index += 1;
-  return "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/$index.png";
+  return k.imageURL.replaceAll(k.index, index.toString());
 }
