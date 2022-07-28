@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:pokedex/api/pokedex_api_spec/model/pokemon_model.dart';
-import 'package:pokedex/features/favorite_list/favorite_pokemon_connector.dart';
-import 'package:pokedex/features/pokemon_list/pokemon_list_connector.dart';
+import 'package:pokedex/features/favorite_list/favorite_pokemon.dart';
+import 'package:pokedex/features/pokemon_list/pokemon_list_page.dart';
 import 'package:pokedex/utils/strings.dart' as str;
 import 'package:pokedex/utils/constant.dart' as k;
 
@@ -15,11 +14,9 @@ class HomePage extends StatefulWidget {
 class _HomePageState extends State<HomePage> {
   int currentIndex = 0;
 
-  List<PokemonModel>? pokemons;
-
   final screens = [
-    const PokemonListConnector(),
-    const FavoriteConnector(),
+    const PokemonListPage(),
+    const FavoritePage(),
   ];
 
   @override
