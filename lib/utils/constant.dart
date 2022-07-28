@@ -7,4 +7,3 @@ const String favoriteRouteName = 'favorites';
 const String favoriteRoute = '/favorites';
 const String homeIcon = 'assets/home.png';
 const String favoriteIcon = 'assets/favorite.png';
-const String bulbasaur = 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/1.png';

@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:go_router/go_router.dart';
 import 'package:pokedex/utils/strings.dart' as str;
 import 'package:pokedex/utils/constant.dart' as k;
 import 'package:pokedex/api/pokedex_api_spec/model/pokemon_model.dart';
