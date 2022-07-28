@@ -10,7 +10,7 @@ final router = GoRouter(
     GoRoute(
       name: k.homeRouteName,
       path: k.homeRoute,
-      builder: (context, state) => HomePage(),
+      builder: (context, state) => const HomePage(),
     ),
     GoRoute(
       name: k.pokemonRouteName,
