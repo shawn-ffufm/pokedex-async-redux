@@ -43,3 +43,7 @@ flutter:
 
   uses-material-design: true
 
+  assets:
+    - assets/home.png
+    - assets/favorite.png
+
