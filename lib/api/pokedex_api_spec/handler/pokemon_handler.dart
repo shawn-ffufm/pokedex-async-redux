@@ -1,12 +1,20 @@
 import 'package:pokedex/api/pokedex_api_spec/model/pokemon_model.dart';
 import 'package:dio/dio.dart';
+import 'package:pokedex/utils/constant.dart' as k;
 
 class PokemonHandler {
   static Future<List<PokemonModel>?> getPokemonList() async {
-    var dio = Dio();
-    Response response = dio.get('') as Response;
+    var uri = k.baseApi;
+    Response response;
+    BaseOptions opts = BaseOptions(
+      baseUrl: uri,
+      responseType: ResponseType.json,
+      connectTimeout: 30000,
+      receiveTimeout: 30000,
+    );
+    Dio dio = Dio(opts);
     try {
-      response = await dio.get('https://pokeapi.co/api/v2/pokemon/?limit=20');
+      response = await dio.get(opts.baseUrl, queryParameters: {'limit': 20});
     } on DioError catch (e) {
       throw (e.message);
     }
