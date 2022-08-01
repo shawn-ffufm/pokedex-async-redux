@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
+import 'package:pokedex/features/favorite_list/favorite_connector.dart';
 import 'package:pokedex/features/favorite_list/favorite_pokemon.dart';
+import 'package:pokedex/features/pokemon_list/pokemon_list_connector.dart';
 import 'package:pokedex/features/pokemon_list/pokemon_list_page.dart';
 import 'package:pokedex/home_page.dart';
 import 'package:pokedex/utils/constant.dart' as k;
@@ -8,11 +10,10 @@ import 'package:pokedex/utils/constant.dart' as k;
 final router = GoRouter(
   observers: [routeObservers],
   routes: <GoRoute>[
-    GoRoute(path: '/', redirect: (_) => k.pokemonRoute, routes: []),
+    GoRoute(path: '/', redirect: (_) => PokemonListConnector.route, routes: []),
     GoRoute(
-      /// TODO: path and name will be transferred to the connector once finished
-      path: k.pokemonRoute,
-      name: k.pokemonRouteName,
+      path: PokemonListConnector.route,
+      name: PokemonListConnector.name,
       pageBuilder: (context, state) => CustomTransitionPage<void>(
         key: state.pageKey,
         child: const HomePage(child: PokemonListPage()),
@@ -21,9 +22,8 @@ final router = GoRouter(
       routes: [],
     ),
     GoRoute(
-      /// TODO: path and name will be transferred to the connector once finished
-      path: k.favoriteRoute,
-      name: k.favoriteRouteName,
+      path: FavoriteConnector.route,
+      name: FavoriteConnector.name,
       pageBuilder: (context, state) => CustomTransitionPage<void>(
         key: state.pageKey,
         child: const HomePage(child: FavoritePage()),

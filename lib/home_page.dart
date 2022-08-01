@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
+import 'package:pokedex/features/favorite_list/favorite_connector.dart';
+import 'package:pokedex/features/pokemon_list/pokemon_list_connector.dart';
 import 'package:pokedex/utils/strings.dart' as str;
 import 'package:pokedex/utils/constant.dart' as k;
 
@@ -48,9 +50,9 @@ class _HomePageState extends State<HomePage> {
 
   int _selectNavIndex(String routerLocation) {
     switch (routerLocation) {
-      case k.pokemonRoute:
+      case PokemonListConnector.route:
         return 0;
-      case k.favoriteRoute:
+      case FavoriteConnector.route:
         return 1;
       default:
         return 0;
@@ -60,11 +62,11 @@ class _HomePageState extends State<HomePage> {
   String _selectNavPath(int selectedTabIndex) {
     switch (selectedTabIndex) {
       case 0:
-        return k.pokemonRoute;
+        return PokemonListConnector.route;
       case 1:
-        return k.favoriteRoute;
+        return FavoriteConnector.route;
       default:
-        return k.pokemonRoute;
+        return PokemonListConnector.route;
     }
   }
 
