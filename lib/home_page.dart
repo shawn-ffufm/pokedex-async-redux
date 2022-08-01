@@ -46,26 +46,30 @@ class HomePage extends StatelessWidget {
   int _selectNavIndex(String routerLocation) {
     switch (routerLocation) {
       case PokemonOverviewConnector.route:
-        return k.counterZero;
+        return k.homeTabIndex;
       case PokemonFavoritesConnector.route:
-        return k.counterOne;
+        return k.favoriteTabIndex;
       default:
-        return k.counterZero;
+        return k.homeTabIndex;
     }
   }
 
   String _selectNavPath(int selectedTabIndex) {
     switch (selectedTabIndex) {
-      case k.counterZero:
+      case k.homeTabIndex:
         return PokemonOverviewConnector.route;
-      case k.counterOne:
+      case k.favoriteTabIndex:
         return PokemonFavoritesConnector.route;
       default:
         return PokemonOverviewConnector.route;
     }
   }
 
-  void _onNavigateToTab(BuildContext context, int selectedTabIndex, int currentTabIndex) {
+  void _onNavigateToTab(
+    BuildContext context,
+    int selectedTabIndex,
+    int currentTabIndex,
+  ) {
     if (currentTabIndex == selectedTabIndex) return;
 
     final navPath = _selectNavPath(selectedTabIndex);

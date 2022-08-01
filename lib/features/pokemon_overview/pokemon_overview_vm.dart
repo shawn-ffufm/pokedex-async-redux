@@ -4,7 +4,7 @@ import 'package:pokedex/state/app_state.dart';
 
 class PokemonOverviewVmFactory extends VmFactory<AppState, PokemonOverviewConnector> {
   @override
-  Vm fromStore() => PokemonOverviewVm(pokemons: state.pokemons);
+  Vm fromStore() => PokemonOverviewVm(pokemons: state.name);
 
   /// TODO: add dispatch statement here to call getpokemons
 

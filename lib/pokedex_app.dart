@@ -8,7 +8,7 @@ class PokedexApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp.router(
-      title: str.homeTitle,
+      title: str.pokedexTitle,
       debugShowCheckedModeBanner: false,
       routeInformationProvider: router.routeInformationProvider,
       routeInformationParser: router.routeInformationParser,
