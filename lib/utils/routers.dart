@@ -5,7 +5,6 @@ import 'package:pokedex/features/favorite_list/favorite_pokemon.dart';
 import 'package:pokedex/features/pokemon_list/pokemon_list_connector.dart';
 import 'package:pokedex/features/pokemon_list/pokemon_list_page.dart';
 import 'package:pokedex/home_page.dart';
-import 'package:pokedex/utils/constant.dart' as k;
 
 final router = GoRouter(
   observers: [routeObservers],

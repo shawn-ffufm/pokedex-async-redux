@@ -8,7 +8,7 @@ class PokemonListVmFactory extends VmFactory<AppState, PokemonListConnector> {
     return PokemonListVm(pokemons: state.pokemons);
   }
 
-/// TODO: add dispatch statement here to call getpokemons
+  /// TODO: add dispatch statement here to call getpokemons
 
 }
 

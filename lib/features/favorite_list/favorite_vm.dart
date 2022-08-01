@@ -8,7 +8,7 @@ class FavoriteVmFactory extends VmFactory<AppState, FavoriteConnector> {
     return FavoriteVm(pokemons: state.pokemons);
   }
 
-/// TODO: add dispatch statement here to call getfavorites
+  /// TODO: add dispatch statement here to call getfavorites
 
 }
 

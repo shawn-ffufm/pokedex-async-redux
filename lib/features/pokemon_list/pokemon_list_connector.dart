@@ -12,9 +12,9 @@ class PokemonListConnector extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-      return StoreConnector<AppState, PokemonListVm>(
-        vm: () => PokemonListVmFactory(),
-        builder: (context, vm) => const PokemonListPage(),
-      );
+    return StoreConnector<AppState, PokemonListVm>(
+      vm: () => PokemonListVmFactory(),
+      builder: (context, vm) => const PokemonListPage(),
+    );
   }
 }
