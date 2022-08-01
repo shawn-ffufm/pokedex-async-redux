@@ -1,4 +1,4 @@
 const double hundred = 100;
-const String favorites = 'Favorites';
 const String imageURL = 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/index.png';
-const String index = 'index';
+const int counterZero = 0;
+const int counterOne = 1;

@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
-import 'package:pokedex/features/pokemon_favorites/favorite_connector.dart';
-import 'package:pokedex/features/pokemon_overview/pokemon_list_connector.dart';
+import 'package:pokedex/features/pokemon_favorites/pokemon_favorites_connector.dart';
+import 'package:pokedex/features/pokemon_overview/pokemon_overview_connector.dart';
 import 'package:pokedex/utils/strings.dart' as str;
+import 'package:pokedex/utils/constant.dart' as k;
 
 class HomePage extends StatelessWidget {
   const HomePage({
@@ -36,7 +37,7 @@ class HomePage extends StatelessWidget {
         iconSize: 25,
         currentIndex: currentNavIndex,
         showUnselectedLabels: false,
-        onTap: (index) => context.go(_onNavigateToTab(index, currentNavIndex)),
+        onTap: (index) => _onNavigateToTab(context, index, currentNavIndex),
         items: navBarItems,
       ),
     );
@@ -45,30 +46,29 @@ class HomePage extends StatelessWidget {
   int _selectNavIndex(String routerLocation) {
     switch (routerLocation) {
       case PokemonListConnector.route:
-        return 0;
-      case FavoriteConnector.route:
-        return 1;
+        return k.counterZero;
+      case PokemonFavoritesConnector.route:
+        return k.counterOne;
       default:
-        return 0;
+        return k.counterZero;
     }
   }
 
   String _selectNavPath(int selectedTabIndex) {
     switch (selectedTabIndex) {
-      case 0:
+      case k.counterZero:
         return PokemonListConnector.route;
-      case 1:
-        return FavoriteConnector.route;
+      case k.counterOne:
+        return PokemonFavoritesConnector.route;
       default:
         return PokemonListConnector.route;
     }
   }
 
-  String _onNavigateToTab(int selectedTabIndex, int currentTabIndex) {
-    if (currentTabIndex == selectedTabIndex) {
-      return _selectNavPath(currentTabIndex);
-    } else {
-      return _selectNavPath(selectedTabIndex);
-    }
+  void _onNavigateToTab(BuildContext context, int selectedTabIndex, int currentTabIndex) {
+    if (currentTabIndex == selectedTabIndex) return;
+
+    final navPath = _selectNavPath(selectedTabIndex);
+    context.go(navPath);
   }
 }
