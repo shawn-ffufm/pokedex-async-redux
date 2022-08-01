@@ -45,7 +45,7 @@ class HomePage extends StatelessWidget {
 
   int _selectNavIndex(String routerLocation) {
     switch (routerLocation) {
-      case PokemonListConnector.route:
+      case PokemonOverviewConnector.route:
         return k.counterZero;
       case PokemonFavoritesConnector.route:
         return k.counterOne;
@@ -57,11 +57,11 @@ class HomePage extends StatelessWidget {
   String _selectNavPath(int selectedTabIndex) {
     switch (selectedTabIndex) {
       case k.counterZero:
-        return PokemonListConnector.route;
+        return PokemonOverviewConnector.route;
       case k.counterOne:
         return PokemonFavoritesConnector.route;
       default:
-        return PokemonListConnector.route;
+        return PokemonOverviewConnector.route;
     }
   }
 

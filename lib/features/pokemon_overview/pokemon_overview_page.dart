@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-class PokemonListPage extends StatelessWidget {
-  const PokemonListPage({
+class PokemonOverviewPage extends StatelessWidget {
+  const PokemonOverviewPage({
     super.key,
   });
 

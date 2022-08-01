@@ -2,17 +2,17 @@ import 'package:async_redux/async_redux.dart';
 import 'package:pokedex/features/pokemon_overview/pokemon_overview_connector.dart';
 import 'package:pokedex/state/app_state.dart';
 
-class PokemonListVmFactory extends VmFactory<AppState, PokemonListConnector> {
+class PokemonOverviewVmFactory extends VmFactory<AppState, PokemonOverviewConnector> {
   @override
-  Vm fromStore() => PokemonListVm(pokemons: state.pokemons);
+  Vm fromStore() => PokemonOverviewVm(pokemons: state.pokemons);
 
   /// TODO: add dispatch statement here to call getpokemons
 
 }
 
-class PokemonListVm extends Vm {
+class PokemonOverviewVm extends Vm {
   /// TODO: add other additional fields here
-  PokemonListVm({required this.pokemons}) : super(equals: [pokemons]);
+  PokemonOverviewVm({required this.pokemons}) : super(equals: [pokemons]);
 
   final String? pokemons;
 }

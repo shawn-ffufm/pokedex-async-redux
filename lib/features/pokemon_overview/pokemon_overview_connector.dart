@@ -4,17 +4,17 @@ import 'package:pokedex/features/pokemon_overview/pokemon_overview_page.dart';
 import 'package:pokedex/features/pokemon_overview/pokemon_overview_vm.dart';
 import 'package:pokedex/state/app_state.dart';
 
-class PokemonListConnector extends StatelessWidget {
-  const PokemonListConnector({Key? key}) : super(key: key);
+class PokemonOverviewConnector extends StatelessWidget {
+  const PokemonOverviewConnector({Key? key}) : super(key: key);
 
   static const String route = '/pokemons';
   static const String routeName = 'pokemons';
 
   @override
   Widget build(BuildContext context) {
-    return StoreConnector<AppState, PokemonListVm>(
-      vm: () => PokemonListVmFactory(),
-      builder: (context, vm) => const PokemonListPage(),
+    return StoreConnector<AppState, PokemonOverviewVm>(
+      vm: () => PokemonOverviewVmFactory(),
+      builder: (context, vm) => const PokemonOverviewPage(),
     );
   }
 }
