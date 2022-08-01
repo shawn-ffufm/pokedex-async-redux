@@ -1,11 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
-import 'package:pokedex/features/favorite_list/favorite_connector.dart';
-import 'package:pokedex/features/pokemon_list/pokemon_list_connector.dart';
+import 'package:pokedex/features/pokemon_favorites/favorite_connector.dart';
+import 'package:pokedex/features/pokemon_overview/pokemon_list_connector.dart';
 import 'package:pokedex/utils/strings.dart' as str;
-import 'package:pokedex/utils/constant.dart' as k;
 
-class HomePage extends StatefulWidget {
+class HomePage extends StatelessWidget {
   const HomePage({
     Key? key,
     required this.child,
@@ -14,27 +13,22 @@ class HomePage extends StatefulWidget {
   final Widget child;
 
   @override
-  State<HomePage> createState() => _HomePageState();
-}
-
-class _HomePageState extends State<HomePage> {
-  @override
   Widget build(BuildContext context) {
     final router = GoRouter.of(context);
     final currentNavIndex = _selectNavIndex(router.location);
     final navBarItems = <BottomNavigationBarItem>[
       const BottomNavigationBarItem(
-        label: str.pokedexTitle,
-        icon: ImageIcon(AssetImage(k.homeIcon)),
+        label: str.homeTitle,
+        icon: Icon(Icons.home),
       ),
       const BottomNavigationBarItem(
         label: str.favoriteTitle,
-        icon: ImageIcon(AssetImage(k.favoriteIcon)),
+        icon: Icon(Icons.favorite),
       ),
     ];
 
     return Scaffold(
-      body: widget.child,
+      body: child,
       bottomNavigationBar: BottomNavigationBar(
         backgroundColor: Colors.blue,
         selectedItemColor: Colors.white,
@@ -42,7 +36,7 @@ class _HomePageState extends State<HomePage> {
         iconSize: 25,
         currentIndex: currentNavIndex,
         showUnselectedLabels: false,
-        onTap: (index) => _onNavigateToTab(index, currentNavIndex),
+        onTap: (index) => context.go(_onNavigateToTab(index, currentNavIndex)),
         items: navBarItems,
       ),
     );
@@ -70,10 +64,11 @@ class _HomePageState extends State<HomePage> {
     }
   }
 
-  void _onNavigateToTab(int selectedTabIndex, int currentTabIndex) {
-    if (currentTabIndex == selectedTabIndex) return;
-
-    final navPath = _selectNavPath(selectedTabIndex);
-    context.go(navPath);
+  String _onNavigateToTab(int selectedTabIndex, int currentTabIndex) {
+    if (currentTabIndex == selectedTabIndex) {
+      return _selectNavPath(currentTabIndex);
+    } else {
+      return _selectNavPath(selectedTabIndex);
+    }
   }
 }

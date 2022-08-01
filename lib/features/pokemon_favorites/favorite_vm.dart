@@ -1,5 +1,5 @@
 import 'package:async_redux/async_redux.dart';
-import 'package:pokedex/features/favorite_list/favorite_connector.dart';
+import 'package:pokedex/features/pokemon_favorites/favorite_connector.dart';
 import 'package:pokedex/state/app_state.dart';
 
 class FavoriteVmFactory extends VmFactory<AppState, FavoriteConnector> {

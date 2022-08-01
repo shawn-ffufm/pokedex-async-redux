@@ -1,7 +1,7 @@
 import 'package:async_redux/async_redux.dart';
 import 'package:flutter/material.dart';
-import 'package:pokedex/features/favorite_list/favorite_pokemon.dart';
-import 'package:pokedex/features/favorite_list/favorite_vm.dart';
+import 'package:pokedex/features/pokemon_favorites/favorite_pokemon.dart';
+import 'package:pokedex/features/pokemon_favorites/favorite_vm.dart';
 import 'package:pokedex/state/app_state.dart';
 
 class FavoriteConnector extends StatelessWidget {

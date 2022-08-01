@@ -1,5 +1,5 @@
 import 'package:async_redux/async_redux.dart';
-import 'package:pokedex/features/pokemon_list/pokemon_list_connector.dart';
+import 'package:pokedex/features/pokemon_overview/pokemon_list_connector.dart';
 import 'package:pokedex/state/app_state.dart';
 
 class PokemonListVmFactory extends VmFactory<AppState, PokemonListConnector> {
