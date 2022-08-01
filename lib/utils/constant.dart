@@ -1,8 +1,8 @@
 const double hundred = 100;
 const String homeRouteName = 'home';
 const String homeRoute = '/';
-const String pokemonRouteName = 'pokemon';
-const String pokemonRoute = '/pokemon';
+const String pokemonRouteName = 'pokemons';
+const String pokemonRoute = '/pokemons';
 const String favorites = 'Favorites';
 const String favoriteRouteName = 'favorites';
 const String favoriteRoute = '/favorites';

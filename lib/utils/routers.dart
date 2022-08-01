@@ -6,27 +6,34 @@ import 'package:pokedex/home_page.dart';
 import 'package:pokedex/utils/constant.dart' as k;
 
 final router = GoRouter(
+  observers: [routeObservers],
   routes: <GoRoute>[
+    GoRoute(path: '/', redirect: (_) => k.pokemonRoute, routes: []),
     GoRoute(
-      name: k.homeRouteName,
-      path: k.homeRoute,
-      builder: (context, state) => const HomePage(),
-    ),
-    GoRoute(
-      name: k.pokemonRouteName,
+      /// TODO: path and name will be transferred to the connector once finished
       path: k.pokemonRoute,
-      builder: (context, state) => const PokemonListPage(),
+      name: k.pokemonRouteName,
+      pageBuilder: (context, state) => CustomTransitionPage<void>(
+        key: state.pageKey,
+        child: const HomePage(child: PokemonListPage()),
+        transitionsBuilder: (context, anim, _, child) => FadeTransition(opacity: anim, child: child),
+      ),
+      routes: [],
     ),
     GoRoute(
-      name: k.favoriteRouteName,
+      /// TODO: path and name will be transferred to the connector once finished
       path: k.favoriteRoute,
-      builder: (context, state) => const FavoritePage(),
+      name: k.favoriteRouteName,
+      pageBuilder: (context, state) => CustomTransitionPage<void>(
+        key: state.pageKey,
+        child: const HomePage(child: FavoritePage()),
+        transitionsBuilder: (context, anim, _, child) => FadeTransition(opacity: anim, child: child),
+      ),
+      routes: [],
     ),
   ],
-
-  /// TODO: ADD error handler
-  /// TODO: Add Redirect
+  errorBuilder: (context, state) => const HomePage(child: PokemonListPage()),
 );
 
 // Register the RouteObserver as a navigation observer.
-final RouteObserver<ModalRoute<void>> routeObserver = RouteObserver<ModalRoute<void>>();
+final RouteObserver<ModalRoute<void>> routeObservers = RouteObserver<ModalRoute<void>>();
