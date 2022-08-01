@@ -4,9 +4,7 @@ import 'package:pokedex/state/app_state.dart';
 
 class FavoriteVmFactory extends VmFactory<AppState, FavoriteConnector> {
   @override
-  Vm fromStore() {
-    return FavoriteVm(pokemons: state.pokemons);
-  }
+  Vm fromStore() => FavoriteVm(pokemons: state.pokemons);
 
   /// TODO: add dispatch statement here to call getfavorites
 
