@@ -12,7 +12,7 @@ final router = GoRouter(
     GoRoute(path: '/', redirect: (_) => PokemonListConnector.route, routes: []),
     GoRoute(
       path: PokemonListConnector.route,
-      name: PokemonListConnector.name,
+      name: PokemonListConnector.routeName,
       pageBuilder: (context, state) => CustomTransitionPage<void>(
         key: state.pageKey,
         child: const HomePage(child: PokemonListPage()),
@@ -22,7 +22,7 @@ final router = GoRouter(
     ),
     GoRoute(
       path: FavoriteConnector.route,
-      name: FavoriteConnector.name,
+      name: FavoriteConnector.routeName,
       pageBuilder: (context, state) => CustomTransitionPage<void>(
         key: state.pageKey,
         child: const HomePage(child: FavoritePage()),

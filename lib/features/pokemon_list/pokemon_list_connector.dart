@@ -8,7 +8,7 @@ class PokemonListConnector extends StatelessWidget {
   const PokemonListConnector({Key? key}) : super(key: key);
 
   static const String route = '/pokemons';
-  static const String name = 'pokemons';
+  static const String routeName = 'pokemons';
 
   @override
   Widget build(BuildContext context) {

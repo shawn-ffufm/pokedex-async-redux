@@ -8,7 +8,7 @@ class FavoriteConnector extends StatelessWidget {
   const FavoriteConnector({Key? key}) : super(key: key);
 
   static const String route = '/favorites';
-  static const String name = 'favorites';
+  static const String routeName = 'favorites';
 
   @override
   Widget build(BuildContext context) {
