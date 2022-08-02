@@ -8,14 +8,14 @@ class PokemonApi {
 
   static const int _limitAmount = 20;
 
-  Future<PokemonModel> getPokemonList() async {
+  Future<Pokemon> getPokemonList() async {
     final queryParams = <String, dynamic>{};
 
-    final baseUri = Uri.parse(apiClient.baseUrl);
+    final baseUri = Uri.parse(apiClient.dio.options.baseUrl);
     final uri = baseUri.replace(queryParameters: queryParams, path: '${baseUri.path}/?limit=$_limitAmount');
 
     return apiClient.dio.getUri(uri).then((response) {
-      return response.data.map((dynamic e) => PokemonModel(name: e['name']));
+      return response.data.map((dynamic json) => Pokemon(name: json['name']));
     });
   }
 }

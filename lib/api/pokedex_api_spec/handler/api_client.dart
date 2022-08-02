@@ -1,17 +1,16 @@
 import 'package:dio/dio.dart';
+import 'package:pokedex/utils/constant.dart' as k;
 
 class ApiClient {
-  final String baseUrl;
   late Dio dio;
+  static const String baseUrl = k.pokemonUrl;
 
-  ApiClient(
-    this.baseUrl,
-  ) {
+  ApiClient() {
     dio = Dio()
       ..options.baseUrl = baseUrl
       ..interceptors.add(QueuedInterceptorsWrapper(
         onRequest: (options, handler) => handler.next(options),
-        onError: (err, handler) => handler.reject(err),
+        onError: (error, handler) => handler.reject(error),
       ));
   }
 }

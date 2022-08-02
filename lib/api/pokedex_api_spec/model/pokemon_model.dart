@@ -5,10 +5,12 @@ part 'pokemon_model.freezed.dart';
 part 'pokemon_model.g.dart';
 
 @freezed
-class PokemonModel with _$PokemonModel {
-  factory PokemonModel({
+class Pokemon with _$Pokemon {
+  factory Pokemon({
     @Default('') @JsonKey(name: 'name') String name,
-  }) = _PokemonModel;
+    @Default(1) @JsonKey(name: 'id') int id,
+    @Default('') @JsonKey(name: 'url') String url,
+  }) = _Pokemon;
 
-  factory PokemonModel.fromJson(Map<String, dynamic> json) => _$PokemonModelFromJson(json);
+  factory Pokemon.fromJson(Map<String, dynamic> json) => _$PokemonFromJson(json);
 }
