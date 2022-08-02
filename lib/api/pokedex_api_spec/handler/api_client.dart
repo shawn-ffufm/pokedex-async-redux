@@ -10,9 +10,7 @@ class ApiClient {
     dio = Dio()
       ..options.baseUrl = baseUrl
       ..interceptors.add(QueuedInterceptorsWrapper(
-        onRequest: (options, handler) async {
-          return handler.next(options);
-        },
+        onRequest: (options, handler) => handler.next(options),
         onError: (err, handler) => handler.reject(err),
       ));
   }
