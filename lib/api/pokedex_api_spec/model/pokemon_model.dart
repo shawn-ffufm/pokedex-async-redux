@@ -7,7 +7,7 @@ part 'pokemon_model.g.dart';
 @freezed
 class PokemonModel with _$PokemonModel {
   factory PokemonModel({
-    @Default('') @JsonKey(name: 'name') String? name,
+    @Default('') @JsonKey(name: 'name') String name,
   }) = _PokemonModel;
 
   factory PokemonModel.fromJson(Map<String, dynamic> json) => _$PokemonModelFromJson(json);
