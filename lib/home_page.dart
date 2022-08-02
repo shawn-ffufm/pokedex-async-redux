@@ -65,11 +65,7 @@ class HomePage extends StatelessWidget {
     }
   }
 
-  void _onNavigateToTab(
-    BuildContext context,
-    int selectedTabIndex,
-    int currentTabIndex,
-  ) {
+  void _onNavigateToTab(BuildContext context, int selectedTabIndex, int currentTabIndex) {
     if (currentTabIndex == selectedTabIndex) return;
 
     final navPath = _selectNavPath(selectedTabIndex);

@@ -5,9 +5,5 @@ class PokemonFavoritesPage extends StatelessWidget {
   const PokemonFavoritesPage({super.key});
 
   @override
-  Widget build(BuildContext context) {
-    return const Center(
-      child: Text(str.favoriteTitle),
-    );
-  }
+  Widget build(BuildContext context) => const Center(child: Text(str.favoriteTitle));
 }

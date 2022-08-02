@@ -9,14 +9,21 @@ import 'package:pokedex/home_page.dart';
 final router = GoRouter(
   observers: [routeObservers],
   routes: <GoRoute>[
-    GoRoute(path: '/', redirect: (_) => PokemonOverviewConnector.route, routes: []),
+    GoRoute(
+      path: '/',
+      redirect: (_) => PokemonOverviewConnector.route,
+      routes: [],
+    ),
     GoRoute(
       path: PokemonOverviewConnector.route,
       name: PokemonOverviewConnector.routeName,
       pageBuilder: (context, state) => CustomTransitionPage<void>(
         key: state.pageKey,
         child: const HomePage(child: PokemonOverviewPage()),
-        transitionsBuilder: (context, anim, _, child) => FadeTransition(opacity: anim, child: child),
+        transitionsBuilder: (context, anim, _, child) => FadeTransition(
+          opacity: anim,
+          child: child,
+        ),
       ),
       routes: [],
 
@@ -28,7 +35,10 @@ final router = GoRouter(
       pageBuilder: (context, state) => CustomTransitionPage<void>(
         key: state.pageKey,
         child: const HomePage(child: PokemonFavoritesPage()),
-        transitionsBuilder: (context, anim, _, child) => FadeTransition(opacity: anim, child: child),
+        transitionsBuilder: (context, anim, _, child) => FadeTransition(
+          opacity: anim,
+          child: child,
+        ),
       ),
       routes: [],
 
