@@ -11,7 +11,7 @@ class AppPersistor extends Persistor<AppState> {
   Future<AppState> readState() async {
     final file = await _getFile();
     if (file.existsSync()) {
-      final String data = await file.readAsString();
+      final data = await file.readAsString();
       return compute(stateDecode, data);
     }
     return AppState();
@@ -36,12 +36,12 @@ class AppPersistor extends Persistor<AppState> {
   }
 
   String stateEncode(AppState st) {
-    final Map<String, dynamic> json = st.toJson();
+    final json = st.toJson();
     return jsonEncode(json);
   }
 
   AppState stateDecode(String data) {
-    final Map<String, dynamic> json = jsonDecode(data) as Map<String, dynamic>;
+    final json = jsonDecode(data) as Map<String, dynamic>;
     return AppState.fromJson(json);
   }
 }

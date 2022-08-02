@@ -1,7 +1,5 @@
-import 'package:dio/dio.dart';
-import 'package:pokedex/api/pokedex_api_spec/handler/ApiClient.dart';
+import 'package:pokedex/api/pokedex_api_spec/handler/api_client.dart';
 import 'package:pokedex/api/pokedex_api_spec/model/pokemon_model.dart';
-import 'package:dio/dio.dart';
 
 class PokemonApi {
   final ApiClient apiClient;
