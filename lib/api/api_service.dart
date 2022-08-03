@@ -1,4 +1,4 @@
-import 'package:pokedex/api/pokedex_api_spec/api_client.dart';
+import 'package:pokedex/api/api_client.dart';
 import 'package:pokedex/api/pokedex_api_spec/handler/pokemon_handler.dart';
 
 class ApiService {
@@ -10,5 +10,7 @@ class ApiService {
 
   late final ApiClient _apiClient = ApiClient();
 
-  late final PokemonApi pokemonApi = PokemonApi(_apiClient);
+  late PokemonApi? _pokemonApi;
+
+  PokemonApi get pokemonApi => _pokemonApi ??= PokemonApi(_apiClient);
 }
