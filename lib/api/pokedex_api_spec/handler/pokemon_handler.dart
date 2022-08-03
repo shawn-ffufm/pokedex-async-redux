@@ -1,4 +1,4 @@
-import 'package:pokedex/api/pokedex_api_spec/handler/api_client.dart';
+import 'package:pokedex/api/pokedex_api_spec/api_client.dart';
 import 'package:pokedex/api/pokedex_api_spec/model/pokemon_model.dart';
 
 class PokemonApi {
