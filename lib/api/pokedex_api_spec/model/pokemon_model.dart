@@ -8,7 +8,6 @@ part 'pokemon_model.g.dart';
 class Pokemon with _$Pokemon {
   factory Pokemon({
     @Default('') @JsonKey(name: 'name') String name,
-    @Default(1) @JsonKey(name: 'id') int id,
     @Default('') @JsonKey(name: 'url') String url,
   }) = _Pokemon;
 

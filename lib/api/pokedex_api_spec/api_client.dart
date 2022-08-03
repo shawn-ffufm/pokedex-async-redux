@@ -1,9 +1,8 @@
 import 'package:dio/dio.dart';
-import 'package:pokedex/utils/constant.dart' as k;
 
 class ApiClient {
   late Dio dio;
-  static const String baseUrl = k.pokemonUrl;
+  static const String baseUrl = 'https://pokeapi.co/api/v2';
 
   ApiClient() {
     dio = Dio()

@@ -12,7 +12,7 @@ class PokemonApi {
     final queryParams = <String, dynamic>{};
 
     final baseUri = Uri.parse(apiClient.dio.options.baseUrl);
-    final uri = baseUri.replace(queryParameters: queryParams, path: '${baseUri.path}pokemon/?limit=$_limitAmount');
+    final uri = baseUri.replace(queryParameters: queryParams, path: '${baseUri.path}/pokemon/?limit=$_limitAmount');
 
     return apiClient.dio.getUri(uri).then((response) {
       return response.data.map((dynamic json) => Pokemon(name: json['name']));
