@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:pokedex/features/pokemon_overview/pokemon_tile.dart';
+import 'package:pokedex/widgets/pokemon_tile.dart';
 import 'package:pokedex/utils/strings.dart' as str;
 
 class PokemonOverviewPage extends StatelessWidget {
@@ -22,7 +22,7 @@ class PokemonOverviewPage extends StatelessWidget {
             crossAxisSpacing: 10,
             mainAxisSpacing: 10,
           ),
-          itemBuilder: (context, index) => const PokemonTile(),
+          itemBuilder: (context, index) => const PokemonTileItem(),
         ),
       ),
     );

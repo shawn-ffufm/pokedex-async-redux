@@ -2,17 +2,15 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:pokedex/utils/strings.dart' as str;
 
-class PokemonTile extends StatefulWidget {
-  const PokemonTile({Key? key}) : super(key: key);
+class PokemonTileItem extends StatelessWidget {
+  const PokemonTileItem({
+    super.key,
+  });
 
-  @override
-  State<PokemonTile> createState() => _PokemonTileState();
-}
-
-class _PokemonTileState extends State<PokemonTile> {
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
+      onTap: () => context.pop(),
       child: Container(
         padding: const EdgeInsets.all(10),
         decoration: BoxDecoration(
@@ -57,7 +55,6 @@ class _PokemonTileState extends State<PokemonTile> {
           ],
         ),
       ),
-      onTap: () => context.pop(),
 
       /// TODO: on tap should redirect and display the details of the pokemon
     );
