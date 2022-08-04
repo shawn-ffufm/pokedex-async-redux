@@ -11,6 +11,8 @@ class PokemonTileItem extends StatelessWidget {
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () => context.pop(),
+
+      /// TODO: on tap should redirect and display the details of the pokemon
       child: Container(
         padding: const EdgeInsets.all(10),
         decoration: BoxDecoration(
@@ -55,8 +57,6 @@ class PokemonTileItem extends StatelessWidget {
           ],
         ),
       ),
-
-      /// TODO: on tap should redirect and display the details of the pokemon
     );
   }
 }
