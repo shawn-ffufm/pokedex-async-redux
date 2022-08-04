@@ -5,6 +5,8 @@ import 'package:pokedex/utils/strings.dart' as str;
 class PokemonOverviewPage extends StatelessWidget {
   const PokemonOverviewPage({super.key});
 
+  static const double _ten = 10;
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -16,9 +18,9 @@ class PokemonOverviewPage extends StatelessWidget {
           padding: const EdgeInsets.all(10),
           gridDelegate: const SliverGridDelegateWithMaxCrossAxisExtent(
             maxCrossAxisExtent: 190,
-            childAspectRatio: 10 / 9,
-            crossAxisSpacing: 10,
-            mainAxisSpacing: 10,
+            childAspectRatio: _ten / 9,
+            crossAxisSpacing: _ten,
+            mainAxisSpacing: _ten,
           ),
           itemBuilder: (context, index) => const PokemonTileItem(),
         ),
