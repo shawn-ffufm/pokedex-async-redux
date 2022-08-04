@@ -3,9 +3,7 @@ import 'package:go_router/go_router.dart';
 import 'package:pokedex/utils/strings.dart' as str;
 
 class PokemonTileItem extends StatelessWidget {
-  const PokemonTileItem({
-    super.key,
-  });
+  const PokemonTileItem({super.key});
 
   @override
   Widget build(BuildContext context) {
