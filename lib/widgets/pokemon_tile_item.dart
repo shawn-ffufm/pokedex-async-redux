@@ -6,10 +6,10 @@ import 'package:pokedex/utils/constant.dart' as k;
 import 'package:dartx/dartx.dart';
 
 class PokemonTileItem extends StatelessWidget {
-  PokemonTileItem({super.key, required this.pokemonList, required this.index});
+  const PokemonTileItem({super.key, required this.pokemonList, required this.index});
 
-  List<Pokemon> pokemonList;
-  int index;
+  final List<Pokemon> pokemonList;
+  final int index;
 
   @override
   Widget build(BuildContext context) {
