@@ -2,6 +2,8 @@ import 'package:pokedex/api/api_client.dart';
 import 'package:pokedex/api/pokedex_api_spec/model/pokemon_model.dart';
 import 'package:pokedex/utils/strings.dart' as str;
 
+typedef Json = Map<String, dynamic>;
+
 class PokemonApi {
   final ApiClient apiClient;
 
@@ -9,17 +11,14 @@ class PokemonApi {
 
   Future<List<Pokemon>> getPokemonList(String? offset, String? limit) async {
     final queryParams = <String, dynamic>{};
-    if (limit != null) {
-      queryParams['limit'] = limit;
-    }
-    if (offset != null) {
-      queryParams['offset'] = offset;
-    }
+
+    if (limit != null) queryParams['limit'] = limit;
+
+    if (offset != null) queryParams['offset'] = offset;
 
     final baseUri = Uri.parse(apiClient.dio.options.baseUrl);
-    final uri = baseUri.replace(queryParameters: queryParams, path: '${baseUri.path}/${str.pokemonRoute}/');
-    return await apiClient.dio
-        .getUri(uri)
-        .then((response) => response.data[str.results].map<Pokemon>((pokemon) => Pokemon.fromJson(pokemon)).toList());
+    final uri = baseUri.replace(queryParameters: queryParams, path: '${baseUri.path}/pokemon');
+    return await apiClient.dio.getUri(uri).then(
+        (response) => response.data[str.results].map<Pokemon>((dynamic e) => Pokemon.fromJson(e as Json)).toList());
   }
 }

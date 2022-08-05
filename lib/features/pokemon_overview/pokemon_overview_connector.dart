@@ -15,7 +15,7 @@ class PokemonOverviewConnector extends StatelessWidget {
   Widget build(BuildContext context) {
     return StoreConnector<AppState, PokemonOverviewVm>(
       vm: () => PokemonOverviewVmFactory(),
-      onInit: (store) async => store.dispatch(GetPokemonListAction()),
+      onInit: (store) async => store.dispatchAsync(GetPokemonListAction()),
       builder: (context, vm) => const PokemonOverviewPage(),
     );
   }
