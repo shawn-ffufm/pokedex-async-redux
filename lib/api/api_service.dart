@@ -10,7 +10,7 @@ class ApiService {
 
   late final ApiClient _apiClient = ApiClient();
 
-  PokemonApi? _pokemonApi;
+  late final PokemonApi _pokemonApi = PokemonApi(_apiClient);
 
-  PokemonApi get pokemonApi => _pokemonApi ??= PokemonApi(_apiClient);
+  PokemonApi get pokemonApi => _pokemonApi;
 }
