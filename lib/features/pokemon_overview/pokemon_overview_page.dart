@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:pokedex/api/pokedex_api_spec/model/pokemon_model.dart';
 import 'package:pokedex/widgets/pokemon_tile_item.dart';
 import 'package:pokedex/utils/strings.dart' as str;
 
 class PokemonOverviewPage extends StatelessWidget {
-  const PokemonOverviewPage({super.key});
+  const PokemonOverviewPage({super.key, required this.pokemonList});
 
+  final List<Pokemon> pokemonList;
   static const double _width = 10;
   static const double _heightRatio = 9;
   static const double _sizeAcross = 190;
@@ -24,7 +26,9 @@ class PokemonOverviewPage extends StatelessWidget {
             crossAxisSpacing: _width,
             mainAxisSpacing: _width,
           ),
-          itemBuilder: (context, index) => const PokemonTileItem(),
+          itemCount: pokemonList.length,
+          itemBuilder: (context, index) => PokemonTileItem(pokemonList: pokemonList, index: index),
+
         ),
       ),
     );
