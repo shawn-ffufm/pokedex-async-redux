@@ -9,6 +9,7 @@ class Pokemon with _$Pokemon {
   factory Pokemon({
     @Default('') @JsonKey(name: 'name') String name,
     @Default('') @JsonKey(name: 'url') String url,
+    @Default('') String img,
   }) = _Pokemon;
 
   factory Pokemon.fromJson(Map<String, dynamic> json) => _$PokemonFromJson(json);

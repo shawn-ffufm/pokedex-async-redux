@@ -7,9 +7,9 @@ class PokemonOverviewPage extends StatelessWidget {
   const PokemonOverviewPage({super.key, required this.pokemonList});
 
   final List<Pokemon> pokemonList;
-  static const double _width = 10;
-  static const double _heightRatio = 9;
-  static const double _sizeAcross = 190;
+  static const double _width = 10.0;
+  static const double _heightRatio = 9.0;
+  static const double _sizeAcross = 190.0;
 
   @override
   Widget build(BuildContext context) {
@@ -27,8 +27,7 @@ class PokemonOverviewPage extends StatelessWidget {
             mainAxisSpacing: _width,
           ),
           itemCount: pokemonList.length,
-          itemBuilder: (context, index) => PokemonTileItem(pokemonList: pokemonList, index: index),
-
+          itemBuilder: (context, index) => PokemonTileItem(pokemon: pokemonList[index]),
         ),
       ),
     );

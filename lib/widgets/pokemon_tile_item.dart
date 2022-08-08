@@ -6,10 +6,9 @@ import 'package:pokedex/utils/constant.dart' as k;
 import 'package:dartx/dartx.dart';
 
 class PokemonTileItem extends StatelessWidget {
-  const PokemonTileItem({super.key, required this.pokemonList, required this.index});
+  const PokemonTileItem({super.key, required this.pokemon});
 
-  final List<Pokemon> pokemonList;
-  final int index;
+  final Pokemon pokemon;
 
   @override
   Widget build(BuildContext context) {
@@ -26,7 +25,7 @@ class PokemonTileItem extends StatelessWidget {
         child: Column(
           children: [
             Text(
-              pokemonList[index].name.capitalize(),
+              pokemon.name.capitalize(),
               style: const TextStyle(
                 fontSize: 20,
                 color: Colors.black,
@@ -34,26 +33,8 @@ class PokemonTileItem extends StatelessWidget {
             ),
             Row(
               children: [
-                Column(
-                  children: const [
-                    Text(
-                      str.typeFiller,
-                      style: TextStyle(
-                        fontSize: 10,
-                        color: Colors.black,
-                      ),
-                    ),
-                    Text(
-                      str.typeFiller,
-                      style: TextStyle(
-                        fontSize: 10,
-                        color: Colors.black,
-                      ),
-                    ),
-                  ],
-                ),
                 Image.network(
-                  k.imageURL.replaceAll(str.indexReplace, (index + 1).toString()),
+                  pokemon.img,
                   height: k.imageHeight,
                   width: k.imageWidth,
                   fit: BoxFit.fill,
