@@ -1,11 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
-import 'package:pokedex/api/pokedex_api_spec/model/pokemon_model.dart';
+import 'package:pokedex/api/pokedex_api_spec/model/pokemon.dart';
 import 'package:pokedex/utils/constant.dart' as k;
 import 'package:dartx/dartx.dart';
+import 'package:pokedex/utils/getimage.dart';
 
 class PokemonTileItem extends StatelessWidget {
-  const PokemonTileItem({super.key, required this.pokemon});
+  const PokemonTileItem({
+    super.key,
+    required this.pokemon,
+  });
 
   final Pokemon pokemon;
 
@@ -32,8 +36,9 @@ class PokemonTileItem extends StatelessWidget {
             ),
             Row(
               children: [
+                /// TODO: this widget will be later improved on https://feilfeilfeil.atlassian.net/browse/PKM-32
                 Image.network(
-                  pokemon.img,
+                  pokemon.url.getImage(),
                   height: k.imageHeight,
                   width: k.imageWidth,
                   fit: BoxFit.fill,

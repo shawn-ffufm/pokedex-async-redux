@@ -1,5 +1,5 @@
 import 'package:async_redux/async_redux.dart';
-import 'package:pokedex/api/pokedex_api_spec/model/pokemon_model.dart';
+import 'package:pokedex/api/pokedex_api_spec/model/pokemon.dart';
 import 'package:pokedex/features/pokemon_overview/pokemon_overview_connector.dart';
 import 'package:pokedex/state/app_state.dart';
 
