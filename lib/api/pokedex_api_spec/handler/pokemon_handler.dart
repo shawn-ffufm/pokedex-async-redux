@@ -18,13 +18,8 @@ class PokemonApi {
 
     final baseUri = Uri.parse(apiClient.dio.options.baseUrl);
     final uri = baseUri.replace(queryParameters: queryParams, path: '${baseUri.path}/pokemon');
-    return await apiClient.dio.getUri(uri).then((response) => response.data[str.results]
-        .map<Pokemon>(
-          (dynamic pokemon) => Pokemon(
-            name: pokemon['name'],
-            url: pokemon['url'],
-          ),
-        )
-        .toList());
+    return await apiClient.dio.getUri(uri).then((response) {
+      return response.data[str.results].map<Pokemon>((dynamic data) => Pokemon.fromJson(data as Json)).toList();
+    });
   }
 }

@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:go_router/go_router.dart';
 import 'package:pokedex/api/pokedex_api_spec/model/pokemon.dart';
 import 'package:pokedex/utils/constant.dart' as k;
 import 'package:dartx/dartx.dart';
-import 'package:pokedex/utils/getimage.dart';
+import 'package:pokedex/utils/extensions.dart';
 
 class PokemonTileItem extends StatelessWidget {
   const PokemonTileItem({
@@ -15,6 +14,7 @@ class PokemonTileItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final pokemonImageUrl = pokemon.url.toCustomUrl;
     return GestureDetector(
       /// TODO: details route will be made static in the pokemon details connector
       onTap: () => context.go('/details', extra: pokemon),
@@ -39,7 +39,7 @@ class PokemonTileItem extends StatelessWidget {
               children: [
                 /// TODO: this widget will be later improved on https://feilfeilfeil.atlassian.net/browse/PKM-32
                 Image.network(
-                  pokemon.url.getImage(),
+                  pokemonImageUrl,
                   height: k.imageHeight,
                   width: k.imageWidth,
                   fit: BoxFit.fill,
