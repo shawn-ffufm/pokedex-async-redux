@@ -3,21 +3,21 @@ import 'package:go_router/go_router.dart';
 import 'package:pokedex/api/pokedex_api_spec/model/pokemon.dart';
 import 'package:pokedex/utils/constant.dart' as k;
 import 'package:dartx/dartx.dart';
+import 'package:pokedex/utils/extensions.dart';
 
 class PokemonTileItem extends StatelessWidget {
   const PokemonTileItem({
     super.key,
     required this.pokemon,
-    required this.pokemonImg,
   });
 
   final Pokemon pokemon;
-  final String pokemonImg;
 
   @override
   Widget build(BuildContext context) {
+    final pokemonImg = pokemon.url.toCustomUrl;
     return GestureDetector(
-      onTap: () => context.go('/details', extra: pokemon),
+      onTap: () => {},
 
       /// TODO: on tap should redirect and display the details of the pokemon
       child: Container(

@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:pokedex/api/pokedex_api_spec/model/pokemon.dart';
-import 'package:pokedex/utils/modify_url.dart';
 import 'package:pokedex/widgets/pokemon_tile_item.dart';
 import 'package:pokedex/utils/strings.dart' as str;
 
@@ -31,8 +30,7 @@ class PokemonOverviewPage extends StatelessWidget {
             mainAxisSpacing: _width,
           ),
           itemCount: pokemonList.length,
-          itemBuilder: (context, index) =>
-              PokemonTileItem(pokemon: pokemonList[index], pokemonImg: pokemonList[index].url.toModifyUrl),
+          itemBuilder: (context, index) => PokemonTileItem(pokemon: pokemonList[index]),
         ),
       ),
     );
