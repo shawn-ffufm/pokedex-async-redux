@@ -43,7 +43,7 @@ class PokemonDetailsPage extends StatelessWidget {
         body: Column(
           children: <Widget>[
             const SizedBox(
-              height: 320,
+              height: 320.0,
               child: Center(
                 /// TODO: place image, name, type, of specific pokemon here
                 child: Text(
@@ -52,7 +52,7 @@ class PokemonDetailsPage extends StatelessWidget {
               ),
             ),
             SizedBox(
-              height: 50,
+              height: 50.0,
               child: GestureDetector(
                 child: AppBar(
                   bottom: TabBar(
