@@ -1,14 +1,22 @@
 import 'package:flutter/material.dart';
-import 'package:go_router/go_router.dart';
-import 'package:pokedex/utils/strings.dart' as str;
+import 'package:pokedex/api/pokedex_api_spec/model/pokemon.dart';
+import 'package:pokedex/utils/constant.dart' as k;
+import 'package:dartx/dartx.dart';
+import 'package:pokedex/utils/extensions.dart';
 
 class PokemonTileItem extends StatelessWidget {
-  const PokemonTileItem({super.key});
+  const PokemonTileItem({
+    super.key,
+    required this.pokemon,
+  });
+
+  final Pokemon pokemon;
 
   @override
   Widget build(BuildContext context) {
+    final pokemonImageUrl = pokemon.url.toCustomUrl;
     return GestureDetector(
-      onTap: () => context.pop(),
+      onTap: () => {},
 
       /// TODO: on tap should redirect and display the details of the pokemon
       child: Container(
@@ -19,37 +27,22 @@ class PokemonTileItem extends StatelessWidget {
         ),
         child: Column(
           children: [
-            const Text(
-              str.nameFiller,
-              style: TextStyle(
+            Text(
+              pokemon.name.capitalize(),
+              style: const TextStyle(
                 fontSize: 20,
                 color: Colors.black,
               ),
             ),
             Row(
               children: [
-                Column(
-                  children: const [
-                    Text(
-                      str.typeFiller,
-                      style: TextStyle(
-                        fontSize: 10,
-                        color: Colors.black,
-                      ),
-                    ),
-                    Text(
-                      str.typeFiller,
-                      style: TextStyle(
-                        fontSize: 10,
-                        color: Colors.black,
-                      ),
-                    ),
-                  ],
+                /// TODO: this widget will be later improved on https://feilfeilfeil.atlassian.net/browse/PKM-32
+                Image.network(
+                  pokemonImageUrl,
+                  height: k.imageHeight,
+                  width: k.imageWidth,
+                  fit: BoxFit.fill,
                 ),
-                const Icon(
-                  Icons.catching_pokemon,
-                  size: 100,
-                )
               ],
             ),
           ],
