@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:pokedex/features/pokemon_details/pokemon_about/pokemon_about_page.dart';
-import 'package:pokedex/features/pokemon_details/pokemon_evolution/pokemon_evolution_page.dart';
 import 'package:pokedex/features/pokemon_details/pokemon_moves/pokemon_moves_page.dart';
 import 'package:pokedex/features/pokemon_details/pokemon_stats/pokemon_stats_page.dart';
 import 'package:pokedex/features/pokemon_overview/pokemon_overview_connector.dart';
@@ -20,13 +19,11 @@ class PokemonDetailsPage extends StatelessWidget {
     final appBarViews = <Widget>[
       const PokemonAboutPage(),
       const PokemonStatsPage(),
-      const PokemonEvolutionPage(),
       const PokemonMovesPage(),
     ];
     final appBarItems = <Tab>[
       const Tab(child: Text(str.aboutTitle)),
       const Tab(child: Text(str.statsTitle)),
-      const Tab(child: Text(str.evolutionTitle)),
       const Tab(child: Text(str.movesTitle)),
     ];
     return DefaultTabController(
