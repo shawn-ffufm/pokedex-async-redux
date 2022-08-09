@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import 'package:pokedex/features/pokemon_details/pokemon_about/pokemon_about_page.dart';
 import 'package:pokedex/features/pokemon_details/pokemon_evolution/pokemon_evolution_page.dart';
 import 'package:pokedex/features/pokemon_details/pokemon_moves/pokemon_moves_page.dart';
 import 'package:pokedex/features/pokemon_details/pokemon_stats/pokemon_stats_page.dart';
+import 'package:pokedex/features/pokemon_overview/pokemon_overview_connector.dart';
 import 'package:pokedex/utils/strings.dart' as str;
 
 class PokemonDetailsPage extends StatelessWidget {
@@ -36,6 +38,12 @@ class PokemonDetailsPage extends StatelessWidget {
       length: 4,
       child: Scaffold(
         appBar: AppBar(
+          leading: IconButton(
+            icon: const Icon(Icons.arrow_back),
+            onPressed: () {
+              context.go(PokemonOverviewConnector.route);
+            },
+          ),
           title: const Text(
             str.pokemonDetailsTitle,
           ),
