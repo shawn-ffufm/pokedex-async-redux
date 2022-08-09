@@ -1,6 +1,11 @@
 const String homeTitle = 'Home';
 const String pokedexTitle = 'Pokedex';
 const String favoriteTitle = 'Favorites';
+const String aboutTitle = 'About';
+const String evolutionTitle = 'Evolution';
+const String movesTitle = 'Moves';
+const String statsTitle = 'Stats';
+const String pokemonDetailsTitle = 'Pokemon Details';
 const String results = 'results';
 const String indexReplace = 'index';
 

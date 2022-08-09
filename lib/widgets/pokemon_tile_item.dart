@@ -16,7 +16,8 @@ class PokemonTileItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: () => context.pop(),
+      /// TODO: details route will be made static in the pokemon details connector
+      onTap: () => context.go('/details', extra: pokemon),
 
       /// TODO: on tap should redirect and display the details of the pokemon
       child: Container(
