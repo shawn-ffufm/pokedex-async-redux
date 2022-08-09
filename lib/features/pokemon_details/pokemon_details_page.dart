@@ -21,21 +21,13 @@ class PokemonDetailsPage extends StatelessWidget {
       const PokemonMovesPage(),
     ];
     final appBarItems = <Tab>[
-      const Tab(
-        child: Text(str.aboutTitle),
-      ),
-      const Tab(
-        child: Text(str.statsTitle),
-      ),
-      const Tab(
-        child: Text(str.evolutionTitle),
-      ),
-      const Tab(
-        child: Text(str.movesTitle),
-      ),
+      const Tab(child: Text(str.aboutTitle)),
+      const Tab(child: Text(str.statsTitle)),
+      const Tab(child: Text(str.evolutionTitle)),
+      const Tab(child: Text(str.movesTitle)),
     ];
     return DefaultTabController(
-      length: 4,
+      length: appBarItems.length,
       child: Scaffold(
         appBar: AppBar(
           leading: IconButton(
@@ -50,18 +42,15 @@ class PokemonDetailsPage extends StatelessWidget {
         ),
         body: Column(
           children: <Widget>[
-            // construct the profile details widget here
             const SizedBox(
               height: 320,
               child: Center(
-                /// TODO: place image name type of specific pokemon here
+                /// TODO: place image, name, type, of specific pokemon here
                 child: Text(
                   'Place Pokemon Basic Details Here',
                 ),
               ),
             ),
-
-            // the tab bar with two items
             SizedBox(
               height: 50,
               child: GestureDetector(
