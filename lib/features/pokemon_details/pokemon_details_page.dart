@@ -12,6 +12,9 @@ class PokemonDetailsPage extends StatelessWidget {
     Key? key,
   }) : super(key: key);
 
+  static const String route = '/details';
+  static const String routeName = 'details';
+
   @override
   Widget build(BuildContext context) {
     final appBarViews = <Widget>[

@@ -44,9 +44,8 @@ final router = GoRouter(
       /// TODO: Add a sub routes in the future
     ),
     GoRoute(
-      /// TODO: details name and route will be made static variable in connector
-      name: 'details',
-      path: '/details',
+      name: PokemonDetailsPage.routeName,
+      path: PokemonDetailsPage.route,
       pageBuilder: (context, state) => CustomTransitionPage<void>(
         key: state.pageKey,
         child: const PokemonDetailsPage(),
