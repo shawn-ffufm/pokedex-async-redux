@@ -14,7 +14,7 @@ class PokemonTileItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final pokemonImg = pokemon.url.toCustomUrl;
+    final pokemonImageUrl = pokemon.url.toCustomUrl;
     return GestureDetector(
       onTap: () => {},
 
@@ -38,7 +38,7 @@ class PokemonTileItem extends StatelessWidget {
               children: [
                 /// TODO: this widget will be later improved on https://feilfeilfeil.atlassian.net/browse/PKM-32
                 Image.network(
-                  pokemonImg,
+                  pokemonImageUrl,
                   height: k.imageHeight,
                   width: k.imageWidth,
                   fit: BoxFit.fill,
