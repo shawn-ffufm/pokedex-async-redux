@@ -19,7 +19,7 @@ class PokemonTileItem extends StatelessWidget {
     final pokemonImageUrl = pokemon.pokemon.url.toCustomUrl;
     return GestureDetector(
       /// TODO: details route will be made static in the pokemon details connector
-      onTap: () => context.pushNamed(PokemonDetailsPage.routeName, extra: pokemon),
+      onTap: () => context.pushNamed(PokemonDetailsPage.routeName, extra: pokemon.id),
 
       /// TODO: on tap should redirect and display the details of the pokemon
       child: Container(

@@ -14,3 +14,21 @@ class GetPokemonListAction extends ReduxAction<AppState> {
     return state.copyWith(pokemons: pokemons);
   }
 }
+
+class GetDetailsAction extends ReduxAction<AppState> {
+  GetDetailsAction({required this.id});
+
+  final int id;
+
+  @override
+  Future<AppState> reduce() async {
+    final detailsResponse = await ApiService().pokemonApi.getPokemonDetails(id.toString());
+    return state.copyWith(selectedPokemon: detailsResponse);
+  }
+}
+class DisposeSelectedPokemon extends ReduxAction<AppState> {
+  @override
+  Future<AppState> reduce() async {
+    return state.copyWith(selectedPokemon: null);
+  }
+}

@@ -9,6 +9,10 @@ extension StringManipulation on String {
   int get getPokemonId => int.parse(split('/')[6]);
 }
 
+extension IntManipulation on int {
+  String get getPokemonUrl => k.imageURL.replaceAll(str.indexReplace, toString());
+}
+
 extension PokemonDtoExt on Pokemon {
   PokemonDto toDto(int id) => PokemonDto(id: id, pokemon: this);
 }
