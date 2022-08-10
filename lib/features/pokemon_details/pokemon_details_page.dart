@@ -1,6 +1,5 @@
 import 'package:dartx/dartx.dart';
 import 'package:flutter/material.dart';
-import 'package:pokedex/api/pokedex_api_spec/model/pokemon.dart';
 import 'package:pokedex/api/pokedex_api_spec/model/pokemon_details.dart';
 import 'package:pokedex/features/pokemon_details/widgets/about_tab_view.dart';
 import 'package:pokedex/features/pokemon_details/widgets/moves_tab_view.dart';
@@ -13,24 +12,20 @@ class PokemonDetailsPage extends StatelessWidget {
   const PokemonDetailsPage({
     Key? key,
     required this.pokemon,
-    this.details,
   }) : super(key: key);
 
   static const String route = 'details';
   static const String routeName = 'details';
-  final Pokemon pokemon;
-  final PokemonDetails? details;
+  final PokemonDetails? pokemon;
 
   @override
   Widget build(BuildContext context) {
     final tabBarViews = <Widget>[
-      AboutTabView(
-        details: details?.aboutDetails,
-      ),
+      const AboutTabView(),
       const StatsTabView(),
       const MovesTabView(),
     ];
-    final pokemonImageUrl = pokemon.url.toCustomUrl;
+    final pokemonImageUrl = pokemon?.id.toString().toCustomUrlId;
     final tabBarItems = <Tab>[
       const Tab(child: Text(str.aboutTitle)),
       const Tab(child: Text(str.statsTitle)),
@@ -55,14 +50,14 @@ class PokemonDetailsPage extends StatelessWidget {
                       height: 20.0,
                     ),
                     Text(
-                      pokemon.name.capitalize(),
+                      pokemon!.name.capitalize(),
                       style: const TextStyle(
                         fontSize: 20.0,
                         color: Colors.black,
                       ),
                     ),
                     Image.network(
-                      pokemonImageUrl,
+                      pokemonImageUrl!,
                       height: k.imageHeight,
                       width: k.imageWidth,
                       fit: BoxFit.fill,
