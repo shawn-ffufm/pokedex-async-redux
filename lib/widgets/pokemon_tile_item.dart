@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:pokedex/api/pokedex_api_spec/model/pokemon.dart';
+import 'package:pokedex/features/pokemon_details/pokemon_details_page.dart';
 import 'package:pokedex/utils/constant.dart' as k;
 import 'package:dartx/dartx.dart';
 import 'package:pokedex/utils/extensions.dart';
@@ -13,14 +14,12 @@ class PokemonTileItem extends StatelessWidget {
 
   final Pokemon pokemon;
 
-  static const String route = '/pokemons/details';
-
   @override
   Widget build(BuildContext context) {
     final pokemonImageUrl = pokemon.url.toCustomUrl;
     return GestureDetector(
       /// TODO: details route will be made static in the pokemon details connector
-      onTap: () => context.push(route, extra: pokemon),
+      onTap: () => context.pushNamed(PokemonDetailsPage.routeName, extra: pokemon),
 
       /// TODO: on tap should redirect and display the details of the pokemon
       child: Container(

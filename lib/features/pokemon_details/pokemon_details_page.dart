@@ -14,19 +14,19 @@ class PokemonDetailsPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final appBarViews = <Widget>[
+    final tabBarViews = <Widget>[
       const AboutTabView(),
       const StatsTabView(),
       const MovesTabView(),
     ];
-    final appBarItems = <Tab>[
+    final tabBarItems = <Tab>[
       const Tab(child: Text(str.aboutTitle)),
       const Tab(child: Text(str.statsTitle)),
       const Tab(child: Text(str.movesTitle)),
     ];
 
     return DefaultTabController(
-      length: appBarItems.length,
+      length: tabBarItems.length,
       child: Scaffold(
         appBar: AppBar(
           title: const Text(str.pokemonDetailsTitle),
@@ -44,14 +44,12 @@ class PokemonDetailsPage extends StatelessWidget {
               height: 50.0,
               child: GestureDetector(
                 child: AppBar(
-                  bottom: TabBar(tabs: appBarItems),
+                  bottom: TabBar(tabs: tabBarItems),
                 ),
               ),
             ),
             Expanded(
-              child: TabBarView(
-                children: appBarViews,
-              ),
+              child: TabBarView(children: tabBarViews),
             ),
           ],
         ),
