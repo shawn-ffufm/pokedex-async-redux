@@ -1,10 +1,9 @@
 import 'package:dartx/dartx.dart';
 import 'package:flutter/material.dart';
-import 'package:pokedex/api/pokedex_api_spec/model/pokemon.dart';
+import 'package:pokedex/api/pokedex_api_spec/model/pokemon_details.dart';
 import 'package:pokedex/features/pokemon_details/widgets/about_tab_view.dart';
 import 'package:pokedex/features/pokemon_details/widgets/moves_tab_view.dart';
 import 'package:pokedex/features/pokemon_details/widgets/stats_tab_view.dart';
-import 'package:pokedex/model/dto/pokemon_dto.dart';
 import 'package:pokedex/utils/extensions.dart';
 import 'package:pokedex/utils/strings.dart' as str;
 import 'package:pokedex/utils/constant.dart' as k;
@@ -17,7 +16,7 @@ class PokemonDetailsPage extends StatelessWidget {
 
   static const String route = 'details';
   static const String routeName = 'details';
-  final PokemonDto? pokemon;
+  final PokemonDetails? pokemon;
 
   @override
   Widget build(BuildContext context) {
@@ -26,7 +25,7 @@ class PokemonDetailsPage extends StatelessWidget {
       const StatsTabView(),
       const MovesTabView(),
     ];
-    final pokemonImageUrl = pokemon?.id.getPokemonUrl ?? '';
+    final pokemonImageUrl = pokemon?.id.toString().toCustomUrlId;
     final tabBarItems = <Tab>[
       const Tab(child: Text(str.aboutTitle)),
       const Tab(child: Text(str.statsTitle)),
@@ -51,14 +50,14 @@ class PokemonDetailsPage extends StatelessWidget {
                       height: 20.0,
                     ),
                     Text(
-                      pokemon?.pokemon.name.capitalize() ?? '',
+                      pokemon!.name.capitalize(),
                       style: const TextStyle(
                         fontSize: 20.0,
                         color: Colors.black,
                       ),
                     ),
                     Image.network(
-                      pokemonImageUrl,
+                      pokemonImageUrl!,
                       height: k.imageHeight,
                       width: k.imageWidth,
                       fit: BoxFit.fill,
