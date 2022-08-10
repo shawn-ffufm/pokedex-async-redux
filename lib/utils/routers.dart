@@ -24,9 +24,13 @@ final router = GoRouter(
           child: child,
         ),
       ),
-      routes: [],
-
-      /// TODO: Add a sub routes in the future
+      routes: [
+        GoRoute(
+          name: PokemonDetailsPage.routeName,
+          path: PokemonDetailsPage.route,
+          builder: (context, state) => const PokemonDetailsPage(),
+        ),
+      ],
     ),
     GoRoute(
       name: PokemonFavoritesConnector.routeName,
@@ -34,21 +38,6 @@ final router = GoRouter(
       pageBuilder: (context, state) => CustomTransitionPage<void>(
         key: state.pageKey,
         child: const HomePage(child: PokemonFavoritesConnector()),
-        transitionsBuilder: (context, anim, _, child) => FadeTransition(
-          opacity: anim,
-          child: child,
-        ),
-      ),
-      routes: [],
-
-      /// TODO: Add a sub routes in the future
-    ),
-    GoRoute(
-      name: PokemonDetailsPage.routeName,
-      path: PokemonDetailsPage.route,
-      pageBuilder: (context, state) => CustomTransitionPage<void>(
-        key: state.pageKey,
-        child: const PokemonDetailsPage(),
         transitionsBuilder: (context, anim, _, child) => FadeTransition(
           opacity: anim,
           child: child,

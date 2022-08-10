@@ -10,3 +10,6 @@ const String indexReplace = 'index';
 
 /// TODO: This string will be deleted once pokemon name is available
 const String typeFiller = 'Lorem type';
+
+/// TODO: This string will be deleted once pokemon details have the specific pokemon
+const String basicDetails = 'Place Pokemon Basic Details Here';
