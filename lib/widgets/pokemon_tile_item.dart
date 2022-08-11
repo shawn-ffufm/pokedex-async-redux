@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
-import 'package:pokedex/api/pokedex_api_spec/model/pokemon.dart';
 import 'package:pokedex/features/pokemon_details/pokemon_details_page.dart';
+import 'package:pokedex/model/dto/pokemon_dto.dart';
 import 'package:pokedex/utils/constant.dart' as k;
 import 'package:dartx/dartx.dart';
 import 'package:pokedex/utils/extensions.dart';
@@ -12,11 +12,11 @@ class PokemonTileItem extends StatelessWidget {
     required this.pokemon,
   });
 
-  final Pokemon pokemon;
+  final PokemonDto pokemon;
 
   @override
   Widget build(BuildContext context) {
-    final pokemonImageUrl = pokemon.url.toCustomUrl;
+    final pokemonImageUrl = pokemon.pokemon.url.toCustomUrl;
     return GestureDetector(
       /// TODO: details route will be made static in the pokemon details connector
       onTap: () => context.pushNamed(PokemonDetailsPage.routeName, extra: pokemon),
@@ -31,7 +31,7 @@ class PokemonTileItem extends StatelessWidget {
         child: Column(
           children: [
             Text(
-              pokemon.name.capitalize(),
+              pokemon.pokemon.name.capitalize(),
               style: const TextStyle(
                 fontSize: 20,
                 color: Colors.black,
