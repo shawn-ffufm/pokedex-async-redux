@@ -9,8 +9,8 @@ class GetPokemonListAction extends ReduxAction<AppState> {
   @override
   Future<AppState> reduce() async {
     final pokemonResponse = await ApiService().pokemonApi.getPokemonList(k.pokemonOffset, k.pokemonLimit);
-    final pokemonDto =
+    final pokemons =
         pokemonResponse.map((pokemon) => PokemonDto(pokemon: pokemon, id: pokemon.url.getPokemonId)).toList();
-    return state.copyWith(pokemons: pokemonDto);
+    return state.copyWith(pokemons: pokemons);
   }
 }
