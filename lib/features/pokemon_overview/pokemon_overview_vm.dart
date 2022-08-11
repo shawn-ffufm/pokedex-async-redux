@@ -5,7 +5,7 @@ import 'package:pokedex/utils/typedefs.dart';
 
 class PokemonOverviewVmFactory extends VmFactory<AppState, PokemonOverviewConnector> {
   @override
-  Vm fromStore() => PokemonOverviewVm(pokemonList: state.pokemons);
+  Vm fromStore() => PokemonOverviewVm(pokemons: state.pokemons);
 
   /// TODO: add dispatch statement here to call getpokemons
 
@@ -13,6 +13,6 @@ class PokemonOverviewVmFactory extends VmFactory<AppState, PokemonOverviewConnec
 
 class PokemonOverviewVm extends Vm {
   /// TODO: add other additional fields here
-  PokemonOverviewVm({required this.pokemonList}) : super(equals: [pokemonList]);
-  final PokemonList pokemonList;
+  PokemonOverviewVm({required this.pokemons}) : super(equals: [pokemons]);
+  final PokemonList pokemons;
 }
