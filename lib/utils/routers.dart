@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
-import 'package:pokedex/features/pokemon_details/pokemon_details_page.dart';
 import 'package:pokedex/features/pokemon_favorites/pokemon_favorites_connector.dart';
 import 'package:pokedex/features/pokemon_overview/pokemon_overview_connector.dart';
 import 'package:pokedex/home_page.dart';
@@ -24,13 +23,7 @@ final router = GoRouter(
           child: child,
         ),
       ),
-      routes: [
-        GoRoute(
-          name: PokemonDetailsPage.routeName,
-          path: PokemonDetailsPage.route,
-          builder: (context, state) => const PokemonDetailsPage(),
-        ),
-      ],
+      routes: [],
     ),
     GoRoute(
       name: PokemonFavoritesConnector.routeName,
