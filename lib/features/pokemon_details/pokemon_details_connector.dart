@@ -9,7 +9,6 @@ class PokemonDetailsConnector extends StatelessWidget {
   const PokemonDetailsConnector({Key? key, required this.id}) : super(key: key);
 
   static const String route = 'details';
-  static const String routeName = 'details';
 
   final int id;
 
@@ -18,6 +17,7 @@ class PokemonDetailsConnector extends StatelessWidget {
     return StoreConnector<AppState, PokemonDetailsVm>(
       vm: () => PokemonDetailsVmFactory(),
       onInit: (store) async => store.dispatchAsync(GetPokemonAction(id: id.toString())),
+      onDispose: (store) async => store.dispatchAsync(DisposePokemon()),
       builder: (context, vm) => PokemonDetailsPage(pokemon: vm.pokemon),
     );
   }

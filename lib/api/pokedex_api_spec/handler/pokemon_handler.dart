@@ -1,6 +1,7 @@
 import 'package:pokedex/api/api_client.dart';
 import 'package:pokedex/api/pokedex_api_spec/model/pokemon.dart';
-import 'package:pokedex/api/pokedex_api_spec/model/pokemon_details.dart';
+import 'package:pokedex/model/dto/pokemon_dto.dart';
+import 'package:pokedex/utils/extensions.dart';
 import 'package:pokedex/utils/strings.dart' as str;
 
 typedef Json = Map<String, dynamic>;
@@ -24,13 +25,13 @@ class PokemonApi {
     });
   }
 
-  Future<PokemonDetails> getPokemon(String? id) async {
+  Future<PokemonDto> getPokemon(String id) async {
     final queryParams = <String, dynamic>{};
 
     final baseUri = Uri.parse(apiClient.dio.options.baseUrl);
     final uri = baseUri.replace(queryParameters: queryParams, path: '${baseUri.path}/pokemon/$id');
     return await apiClient.dio.getUri(uri).then((response) {
-      return PokemonDetails.fromJson(response.data);
+      return Pokemon.fromJson(response.data).toDto(response.data['id']);
     });
   }
 }
