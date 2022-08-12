@@ -10,7 +10,7 @@ part 'app_state.g.dart';
 @freezed
 class AppState with _$AppState {
   factory AppState({
-    @Default(<Pokemon>[]) PokemonList pokemons,
+    @Default(<PokemonDto>[]) PokemonList pokemons,
     @Default(null) PokemonDto? selectedPokemon,
   }) = _AppState;
 

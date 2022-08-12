@@ -1,3 +1,3 @@
-import 'package:pokedex/api/pokedex_api_spec/model/pokemon.dart';
+import 'package:pokedex/model/dto/pokemon_dto.dart';
 
-typedef PokemonList = List<Pokemon>;
+typedef PokemonList = List<PokemonDto>;
