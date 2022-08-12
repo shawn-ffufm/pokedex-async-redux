@@ -7,18 +7,19 @@ import 'package:dartx/dartx.dart';
 import 'package:pokedex/utils/extensions.dart';
 
 class PokemonTileItem extends StatelessWidget {
-  const PokemonTileItem({
-    super.key,
-    required this.pokemon,
-  });
+  const PokemonTileItem({super.key, required this.pokemon, required this.onTap});
 
   final PokemonDto pokemon;
+  final VoidCallback onTap;
 
   @override
   Widget build(BuildContext context) {
     final pokemonImageUrl = pokemon.pokemon.url.toCustomUrl;
     return GestureDetector(
-      onTap: () => context.pushNamed(PokemonDetailsConnector.route, extra: pokemon.pokemon.url.getPokemonId),
+      onTap: () {
+        onTap;
+        context.pushNamed(PokemonDetailsConnector.route, extra: pokemon.id);
+      },
       child: Container(
         padding: const EdgeInsets.all(10),
         decoration: BoxDecoration(

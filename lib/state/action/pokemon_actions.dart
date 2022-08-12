@@ -5,15 +5,18 @@ import 'package:pokedex/api/api_service.dart';
 import 'package:pokedex/utils/constant.dart' as k;
 import 'package:pokedex/utils/extensions.dart';
 
-class GetPokemonListAction extends ReduxAction<AppState> {
+/// This function gets the list of pokemons and transform it into a list of PokemonDto
+class GetPokemonsAction extends ReduxAction<AppState> {
   @override
   Future<AppState> reduce() async {
     final pokemonResponse = await ApiService().pokemonApi.getPokemonList(k.pokemonOffset, k.pokemonLimit);
-    final pokemonDto = pokemonResponse.map((pokemon) => PokemonDto(pokemon: pokemon, id: pokemon.url.getPokemonId)).toList();
+    final pokemonDto =
+        pokemonResponse.map((pokemon) => PokemonDto(pokemon: pokemon, id: pokemon.url.getPokemonId)).toList();
     return state.copyWith(pokemons: pokemonDto);
   }
 }
 
+/// This function gets a specific pokemon and its details
 class GetPokemonAction extends ReduxAction<AppState> {
   GetPokemonAction({required this.id});
 
@@ -26,9 +29,22 @@ class GetPokemonAction extends ReduxAction<AppState> {
   }
 }
 
-class DisposePokemon extends ReduxAction<AppState> {
+/// This function assigns the selected pokemon to the state
+class AssignSelectedPokemonAction extends ReduxAction<AppState> {
+  AssignSelectedPokemonAction({required this.pokemon});
+
+  final PokemonDto pokemon;
+
   @override
-  Future<AppState> reduce() async {
+  AppState? reduce() {
+    return state.copyWith(selectedPokemon: pokemon);
+  }
+}
+
+/// Clearing the state on selectedPokemon
+class ClearSelectedPokemonAction extends ReduxAction<AppState> {
+  @override
+  AppState reduce() {
     return state.copyWith(selectedPokemon: null);
   }
 }

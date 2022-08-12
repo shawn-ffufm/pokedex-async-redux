@@ -1,7 +1,6 @@
 import 'package:pokedex/api/api_client.dart';
 import 'package:pokedex/api/pokedex_api_spec/model/pokemon.dart';
 import 'package:pokedex/model/dto/pokemon_dto.dart';
-import 'package:pokedex/utils/extensions.dart';
 import 'package:pokedex/utils/strings.dart' as str;
 
 typedef Json = Map<String, dynamic>;
@@ -31,7 +30,9 @@ class PokemonApi {
     final baseUri = Uri.parse(apiClient.dio.options.baseUrl);
     final uri = baseUri.replace(queryParameters: queryParams, path: '${baseUri.path}/pokemon/$id');
     return await apiClient.dio.getUri(uri).then((response) {
-      return Pokemon.fromJson(response.data).toDto(int.parse(id));
+      var pokemon = Pokemon.fromJson(response.data['species']);
+      var id = response.data['id'];
+      return PokemonDto(pokemon: pokemon, id: id);
     });
   }
 }

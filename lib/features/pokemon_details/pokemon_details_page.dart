@@ -14,7 +14,7 @@ class PokemonDetailsPage extends StatelessWidget {
     required this.pokemon,
   }) : super(key: key);
 
-  final PokemonDto? pokemon;
+  final PokemonDto pokemon;
 
   @override
   Widget build(BuildContext context) {
@@ -23,13 +23,12 @@ class PokemonDetailsPage extends StatelessWidget {
       const StatsTabView(),
       const MovesTabView(),
     ];
-    final pokemonImageUrl = pokemon?.id.toString().toCustomUrlId ?? '';
+    final pokemonImageUrl = pokemon.pokemon.url.toCustomUrl;
     final tabBarItems = <Tab>[
       const Tab(child: Text(str.aboutTitle)),
       const Tab(child: Text(str.statsTitle)),
       const Tab(child: Text(str.movesTitle)),
     ];
-
     return DefaultTabController(
       length: tabBarItems.length,
       child: Scaffold(
@@ -44,11 +43,9 @@ class PokemonDetailsPage extends StatelessWidget {
                 /// TODO: place type of specific pokemon here
                 child: Column(
                   children: [
-                    const SizedBox(
-                      height: 20.0,
-                    ),
+                    const SizedBox(height: 20.0),
                     Text(
-                      pokemon?.pokemon.name.capitalize() ?? '',
+                      pokemon.pokemon.name.capitalize(),
                       style: const TextStyle(
                         fontSize: 20.0,
                         color: Colors.black,

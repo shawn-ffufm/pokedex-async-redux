@@ -5,10 +5,10 @@ import 'package:pokedex/state/app_state.dart';
 
 class PokemonDetailsVmFactory extends VmFactory<AppState, PokemonDetailsConnector> {
   @override
-  Vm fromStore() => PokemonDetailsVm(pokemon: state.selectedPokemon);
+  Vm fromStore() => PokemonDetailsVm(pokemon: state.selectedPokemon!);
 }
 
 class PokemonDetailsVm extends Vm {
   PokemonDetailsVm({required this.pokemon}) : super(equals: [pokemon]);
-  final PokemonDto? pokemon;
+  final PokemonDto pokemon;
 }
