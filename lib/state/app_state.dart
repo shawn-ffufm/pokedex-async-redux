@@ -1,7 +1,6 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:pokedex/model/dto/pokemon_dto.dart';
 import 'package:pokedex/utils/typedefs.dart';
-import '../api/pokedex_api_spec/model/pokemon.dart';
 
 part 'app_state.freezed.dart';
 
