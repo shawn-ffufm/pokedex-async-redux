@@ -7,7 +7,10 @@ import 'package:pokedex/utils/typedefs.dart';
 
 class PokemonOverviewVmFactory extends VmFactory<AppState, PokemonOverviewConnector> {
   @override
-  Vm fromStore() => PokemonOverviewVm(pokemons: state.pokemons, onSaveSelectedPokemon: _onSaveSelectedPokemon);
+  Vm fromStore() => PokemonOverviewVm(
+        pokemons: state.pokemons,
+        onSaveSelectedPokemon: _onSaveSelectedPokemon,
+      );
 
   void _onSaveSelectedPokemon(PokemonDto selectedPokemon) =>
       dispatch(AssignSelectedPokemonAction(pokemon: selectedPokemon));
