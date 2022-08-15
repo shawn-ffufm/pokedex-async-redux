@@ -1,4 +1,5 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:pokedex/api/pokedex_api_spec/model/ability_list.dart';
 import 'package:pokedex/api/pokedex_api_spec/model/pokemon.dart';
 
 part 'pokemon_dto.freezed.dart';
@@ -14,6 +15,7 @@ class PokemonDto with _$PokemonDto {
     @Default(0) int height,
     @Default(0) int weight,
     @Default(0) int baseExperience,
+    @Default(<AbilityList>[]) List<AbilityList> abilities,
   }) = _PokemonDto;
 
   factory PokemonDto.fromJson(Map<String, dynamic> json) => _$PokemonDtoFromJson(json);

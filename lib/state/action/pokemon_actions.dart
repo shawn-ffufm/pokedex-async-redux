@@ -31,6 +31,7 @@ class GetPokemonDetailsAction extends ReduxAction<AppState> {
       height: pokemonDetails.height,
       weight: pokemonDetails.weight,
       baseExperience: pokemonDetails.baseExperience,
+      abilities: pokemonDetails.abilities,
     );
     return state.copyWith(selectedPokemon: _selectedPokemon);
   }
