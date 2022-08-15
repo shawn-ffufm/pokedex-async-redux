@@ -22,8 +22,12 @@ class PokemonDetailsPage extends StatelessWidget {
       AboutTabView(
         details: pokemon,
       ),
-      const StatsTabView(),
-      const MovesTabView(),
+      StatsTabView(
+        details: pokemon,
+      ),
+      MovesTabView(
+        details: pokemon,
+      ),
     ];
     final tabBarItems = <Tab>[
       const Tab(child: Text(str.aboutTitle)),
