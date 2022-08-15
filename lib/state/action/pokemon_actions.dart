@@ -5,7 +5,7 @@ import 'package:pokedex/api/api_service.dart';
 import 'package:pokedex/utils/constant.dart' as k;
 import 'package:pokedex/utils/extensions.dart';
 
-/// This function gets the list of pokemons and transform it into a list of PokemonDto
+/// This action gets the list of pokemons and transform it into a list of PokemonDto
 class GetPokemonsAction extends ReduxAction<AppState> {
   @override
   Future<AppState> reduce() async {
@@ -16,7 +16,7 @@ class GetPokemonsAction extends ReduxAction<AppState> {
   }
 }
 
-/// This function gets a specific pokemon and its details
+/// This action gets a specific pokemon and its details
 class GetPokemonDetailsAction extends ReduxAction<AppState> {
   GetPokemonDetailsAction({required this.id});
 
@@ -41,7 +41,7 @@ class GetPokemonDetailsAction extends ReduxAction<AppState> {
   void after() => dispatch(UpdatePokemonsAction(pokemon: _selectedPokemon));
 }
 
-/// This function assigns the selected pokemon to the state
+/// This action assigns the selected pokemon to the state
 class AssignSelectedPokemonAction extends ReduxAction<AppState> {
   AssignSelectedPokemonAction({required this.pokemon});
 
@@ -51,13 +51,13 @@ class AssignSelectedPokemonAction extends ReduxAction<AppState> {
   AppState reduce() => state.copyWith(selectedPokemon: pokemon);
 }
 
-/// Clearing the state on selectedPokemon
+/// Action that clear the state of selectedPokemon
 class ClearSelectedPokemonAction extends ReduxAction<AppState> {
   @override
   AppState reduce() => state.copyWith(selectedPokemon: null);
 }
 
-/// Updating the information of a pokemon in the list of pokemons
+/// Action for updating the information of a pokemon in the list of pokemons
 class UpdatePokemonsAction extends ReduxAction<AppState> {
   UpdatePokemonsAction({required this.pokemon});
 
