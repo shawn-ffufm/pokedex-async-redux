@@ -17,32 +17,30 @@ class GetPokemonsAction extends ReduxAction<AppState> {
 }
 
 /// This function gets a specific pokemon and its details
-class GetPokemonAction extends ReduxAction<AppState> {
-  GetPokemonAction({required this.id});
+class GetPokemonDetailsAction extends ReduxAction<AppState> {
+  GetPokemonDetailsAction({required this.id});
 
   final int id;
+  late PokemonDto _pokemon;
 
   @override
   Future<AppState> reduce() async {
-    final PokemonDto selectedPokemon;
-    final PokemonDto updatedPokemon;
     final pokemonDetails = await ApiService().pokemonApi.getPokemonDetails(id.toString());
-    selectedPokemon = _getPokemon();
-    updatedPokemon = PokemonDto(
+    final selectedPokemon = _getPokemon();
+    _pokemon = PokemonDto(
         pokemon: selectedPokemon.pokemon,
         id: id,
         height: pokemonDetails.height,
         weight: pokemonDetails.weight,
         baseExp: pokemonDetails.baseExp);
-    return state.copyWith(selectedPokemon: updatedPokemon);
+    return state.copyWith(selectedPokemon: _pokemon);
   }
 
   PokemonDto _getPokemon() => state.pokemons.firstWhere((pokemon) => pokemon.id == id);
 
   @override
-  void after() {
-    AssignSelectedPokemonAction(pokemon: state.selectedPokemon!);
-  }
+  void after() => UpdatePokemonsAction(pokemon: _pokemon);
+
 }
 
 /// This function assigns the selected pokemon to the state
@@ -58,23 +56,20 @@ class AssignSelectedPokemonAction extends ReduxAction<AppState> {
 /// Clearing the state on selectedPokemon
 class ClearSelectedPokemonAction extends ReduxAction<AppState> {
   @override
-  void before() {
-    UpdatePokemonList(pokemon: state.selectedPokemon!);
-  }
-
-  @override
   AppState reduce() => state.copyWith(selectedPokemon: null);
 }
 
 /// Updating the information of a pokemon in the list of pokemons
-class UpdatePokemonList extends ReduxAction<AppState> {
-  UpdatePokemonList({required this.pokemon});
+class UpdatePokemonsAction extends ReduxAction<AppState> {
+  UpdatePokemonsAction({required this.pokemon});
 
   final PokemonDto pokemon;
 
   @override
   AppState reduce() {
-    state.pokemons[pokemon.id] = pokemon;
-    return state.copyWith(pokemons: state.pokemons);
+    final currentPokemons = state.pokemons.toList();
+    currentPokemons[pokemon.id - 1] = pokemon;
+    final updatedPokemons = currentPokemons;
+    return state.copyWith(pokemons: updatedPokemons);
   }
 }
