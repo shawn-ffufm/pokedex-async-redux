@@ -10,7 +10,9 @@ class ApiService {
 
   late final ApiClient _apiClient = ApiClient();
 
+  late final Uri _baseUri = Uri.parse(ApiClient.baseUrl);
+
   PokemonApi? _pokemonApi;
 
-  PokemonApi get pokemonApi => _pokemonApi ??= PokemonApi(_apiClient);
+  PokemonApi get pokemonApi => _pokemonApi ??= PokemonApi(_apiClient, _baseUri);
 }

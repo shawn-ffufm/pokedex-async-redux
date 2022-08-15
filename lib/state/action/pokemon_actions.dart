@@ -24,8 +24,24 @@ class GetPokemonAction extends ReduxAction<AppState> {
 
   @override
   Future<AppState> reduce() async {
-    final detailsResponse = await ApiService().pokemonApi.getPokemon(id.toString());
-    return state.copyWith(selectedPokemon: detailsResponse);
+    final PokemonDto selectedPokemon;
+    final PokemonDto updatedPokemon;
+    final pokemonDetails = await ApiService().pokemonApi.getPokemonDetails(id.toString());
+    selectedPokemon = _getPokemon();
+    updatedPokemon = PokemonDto(
+        pokemon: selectedPokemon.pokemon,
+        id: id,
+        height: pokemonDetails.height,
+        weight: pokemonDetails.weight,
+        baseExp: pokemonDetails.baseExp);
+    return state.copyWith(selectedPokemon: updatedPokemon);
+  }
+
+  PokemonDto _getPokemon() => state.pokemons.firstWhere((pokemon) => pokemon.id == id);
+
+  @override
+  void after() {
+    AssignSelectedPokemonAction(pokemon: state.selectedPokemon!);
   }
 }
 
@@ -36,15 +52,11 @@ class AssignSelectedPokemonAction extends ReduxAction<AppState> {
   final PokemonDto pokemon;
 
   @override
-  AppState? reduce() {
-    return state.copyWith(selectedPokemon: pokemon);
-  }
+  AppState reduce() => state.copyWith(selectedPokemon: pokemon);
 }
 
 /// Clearing the state on selectedPokemon
 class ClearSelectedPokemonAction extends ReduxAction<AppState> {
   @override
-  AppState reduce() {
-    return state.copyWith(selectedPokemon: null);
-  }
+  AppState reduce() => state.copyWith(selectedPokemon: null);
 }

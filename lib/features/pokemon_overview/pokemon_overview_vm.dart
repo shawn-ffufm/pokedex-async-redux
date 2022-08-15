@@ -18,7 +18,11 @@ class PokemonOverviewVmFactory extends VmFactory<AppState, PokemonOverviewConnec
 
 class PokemonOverviewVm extends Vm {
   /// TODO: add other additional fields here
-  PokemonOverviewVm({required this.pokemons, required this.onSaveSelectedPokemon}) : super(equals: [pokemons]);
+  PokemonOverviewVm({
+    required this.pokemons,
+    required this.onSaveSelectedPokemon,
+  }) : super(equals: [pokemons]);
+
   final PokemonList pokemons;
-  final FunctionSelectedPokemon onSaveSelectedPokemon;
+  final OnSelectPokemon onSaveSelectedPokemon;
 }

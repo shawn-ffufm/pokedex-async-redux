@@ -9,7 +9,10 @@ part 'pokemon_dto.g.dart';
 class PokemonDto with _$PokemonDto {
   factory PokemonDto({
     required Pokemon pokemon,
-    @Default(0) int id,
+    required int id,
+    @Default(0) int height,
+    @Default(0) int weight,
+    @Default(0) int baseExp,
   }) = _PokemonDto;
 
   factory PokemonDto.fromJson(Map<String, dynamic> json) => _$PokemonDtoFromJson(json);

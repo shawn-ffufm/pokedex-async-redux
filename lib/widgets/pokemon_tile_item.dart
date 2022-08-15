@@ -7,7 +7,11 @@ import 'package:dartx/dartx.dart';
 import 'package:pokedex/utils/extensions.dart';
 
 class PokemonTileItem extends StatelessWidget {
-  const PokemonTileItem({super.key, required this.pokemon, required this.onTap});
+  const PokemonTileItem({
+    super.key,
+    required this.pokemon,
+    required this.onTap,
+  });
 
   final PokemonDto pokemon;
   final VoidCallback onTap;

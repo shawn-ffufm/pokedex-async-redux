@@ -12,7 +12,8 @@ class PokemonOverviewPage extends StatelessWidget {
   });
 
   final PokemonList pokemons;
-  final FunctionSelectedPokemon onSaveSelectedPokemon;
+  final OnSelectPokemon onSaveSelectedPokemon;
+
   static const double _width = 10.0;
   static const double _heightRatio = 9.0;
   static const double _sizeAcross = 190.0;

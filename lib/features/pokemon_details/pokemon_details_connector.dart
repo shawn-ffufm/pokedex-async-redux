@@ -6,7 +6,10 @@ import 'package:pokedex/state/action/pokemon_actions.dart';
 import 'package:pokedex/state/app_state.dart';
 
 class PokemonDetailsConnector extends StatelessWidget {
-  const PokemonDetailsConnector({Key? key, required this.id}) : super(key: key);
+  const PokemonDetailsConnector({
+    Key? key,
+    required this.id,
+  }) : super(key: key);
 
   static const String route = 'details';
 
@@ -16,8 +19,8 @@ class PokemonDetailsConnector extends StatelessWidget {
   Widget build(BuildContext context) {
     return StoreConnector<AppState, PokemonDetailsVm>(
       vm: () => PokemonDetailsVmFactory(),
-      onInit: (store) async => store.dispatchAsync(GetPokemonAction(id: id)),
-      onDispose: (store) async => store.dispatchAsync(ClearSelectedPokemonAction()),
+      onInit: (store) async => store.dispatch(GetPokemonAction(id: id)),
+      onDispose: (store) async => store.dispatch(ClearSelectedPokemonAction()),
       builder: (context, vm) => PokemonDetailsPage(pokemon: vm.pokemon),
     );
   }
