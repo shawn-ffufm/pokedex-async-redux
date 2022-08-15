@@ -10,9 +10,9 @@ class GetPokemonsAction extends ReduxAction<AppState> {
   @override
   Future<AppState> reduce() async {
     final pokemonResponse = await ApiService().pokemonApi.getPokemonList(k.pokemonOffset, k.pokemonLimit);
-    final pokemonDto =
+    final mappedPokemons =
         pokemonResponse.map((pokemon) => PokemonDto(pokemon: pokemon, id: pokemon.url.getPokemonId)).toList();
-    return state.copyWith(pokemons: pokemonDto);
+    return state.copyWith(pokemons: mappedPokemons);
   }
 }
 
@@ -21,24 +21,24 @@ class GetPokemonDetailsAction extends ReduxAction<AppState> {
   GetPokemonDetailsAction({required this.id});
 
   final int id;
-  late PokemonDto _pokemon;
+  late PokemonDto _selectedPokemon;
 
   @override
   Future<AppState> reduce() async {
     final pokemonDetails = await ApiService().pokemonApi.getPokemonDetails(id.toString());
     final selectedPokemon = _getPokemon();
-    _pokemon = selectedPokemon.copyWith(
+    _selectedPokemon = selectedPokemon.copyWith(
       height: pokemonDetails.height,
       weight: pokemonDetails.weight,
-      baseExp: pokemonDetails.baseExp,
+      baseExperience: pokemonDetails.baseExperience,
     );
-    return state.copyWith(selectedPokemon: _pokemon);
+    return state.copyWith(selectedPokemon: _selectedPokemon);
   }
 
   PokemonDto _getPokemon() => state.pokemons.firstWhere((pokemon) => pokemon.id == id);
 
   @override
-  void after() => dispatch(UpdatePokemonsAction(pokemon: _pokemon));
+  void after() => dispatch(UpdatePokemonsAction(pokemon: _selectedPokemon));
 }
 
 /// This function assigns the selected pokemon to the state
