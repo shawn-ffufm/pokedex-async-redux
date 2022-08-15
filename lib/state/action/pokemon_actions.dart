@@ -58,5 +58,23 @@ class AssignSelectedPokemonAction extends ReduxAction<AppState> {
 /// Clearing the state on selectedPokemon
 class ClearSelectedPokemonAction extends ReduxAction<AppState> {
   @override
+  void before() {
+    UpdatePokemonList(pokemon: state.selectedPokemon!);
+  }
+
+  @override
   AppState reduce() => state.copyWith(selectedPokemon: null);
+}
+
+/// Updating the information of a pokemon in the list of pokemons
+class UpdatePokemonList extends ReduxAction<AppState> {
+  UpdatePokemonList({required this.pokemon});
+
+  final PokemonDto pokemon;
+
+  @override
+  AppState reduce() {
+    state.pokemons[pokemon.id] = pokemon;
+    return state.copyWith(pokemons: state.pokemons);
+  }
 }
