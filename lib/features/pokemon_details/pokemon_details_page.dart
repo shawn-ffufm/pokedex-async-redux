@@ -23,12 +23,15 @@ class PokemonDetailsPage extends StatelessWidget {
       const StatsTabView(),
       const MovesTabView(),
     ];
-    final pokemonImageUrl = pokemon.pokemon.url.toCustomUrl;
     final tabBarItems = <Tab>[
       const Tab(child: Text(str.aboutTitle)),
       const Tab(child: Text(str.statsTitle)),
       const Tab(child: Text(str.movesTitle)),
     ];
+
+    final pokemonImageUrl = pokemon.pokemon.url.toCustomUrl;
+    final pokemonName = pokemon.pokemon.name.capitalize();
+
     return DefaultTabController(
       length: tabBarItems.length,
       child: Scaffold(
@@ -45,7 +48,7 @@ class PokemonDetailsPage extends StatelessWidget {
                   children: [
                     const SizedBox(height: 20.0),
                     Text(
-                      pokemon.pokemon.name.capitalize(),
+                      pokemonName,
                       style: const TextStyle(
                         fontSize: 20.0,
                         color: Colors.black,

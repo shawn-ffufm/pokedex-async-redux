@@ -21,7 +21,7 @@ class PokemonTileItem extends StatelessWidget {
     final pokemonImageUrl = pokemon.pokemon.url.toCustomUrl;
     return GestureDetector(
       onTap: () {
-        onTap;
+        onTap();
         context.pushNamed(PokemonDetailsConnector.route, extra: pokemon.id);
       },
       child: Container(

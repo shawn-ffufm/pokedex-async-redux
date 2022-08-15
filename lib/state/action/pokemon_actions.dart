@@ -27,19 +27,18 @@ class GetPokemonDetailsAction extends ReduxAction<AppState> {
   Future<AppState> reduce() async {
     final pokemonDetails = await ApiService().pokemonApi.getPokemonDetails(id.toString());
     final selectedPokemon = _getPokemon();
-    _pokemon = PokemonDto(
-        pokemon: selectedPokemon.pokemon,
-        id: id,
-        height: pokemonDetails.height,
-        weight: pokemonDetails.weight,
-        baseExp: pokemonDetails.baseExp);
+    _pokemon = selectedPokemon.copyWith(
+      height: pokemonDetails.height,
+      weight: pokemonDetails.weight,
+      baseExp: pokemonDetails.baseExp,
+    );
     return state.copyWith(selectedPokemon: _pokemon);
   }
 
   PokemonDto _getPokemon() => state.pokemons.firstWhere((pokemon) => pokemon.id == id);
 
   @override
-  void after() => UpdatePokemonsAction(pokemon: _pokemon);
+  void after() => dispatch(UpdatePokemonsAction(pokemon: _pokemon));
 }
 
 /// This function assigns the selected pokemon to the state
