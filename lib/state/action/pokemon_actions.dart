@@ -40,7 +40,6 @@ class GetPokemonDetailsAction extends ReduxAction<AppState> {
 
   @override
   void after() => UpdatePokemonsAction(pokemon: _pokemon);
-
 }
 
 /// This function assigns the selected pokemon to the state
