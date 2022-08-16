@@ -27,11 +27,16 @@ class GetPokemonDetailsAction extends ReduxAction<AppState> {
   Future<AppState> reduce() async {
     final pokemonDetails = await ApiService().pokemonApi.getPokemonDetails(id.toString());
     final selectedPokemon = _getPokemon();
+
     _selectedPokemon = selectedPokemon.copyWith(
       height: pokemonDetails.height,
       weight: pokemonDetails.weight,
       baseExperience: pokemonDetails.baseExperience,
+      abilities: pokemonDetails.abilities,
+      stats: pokemonDetails.stats,
+      moves: pokemonDetails.moves,
     );
+
     return state.copyWith(selectedPokemon: _selectedPokemon);
   }
 
