@@ -29,54 +29,44 @@ class StatsTabView extends StatelessWidget {
       statValueProgression.add((details.stats[i].baseStat / 200.0));
     }
 
-    return MaterialApp(
-      home: Scaffold(
-        body: ListView.builder(
-          padding: const EdgeInsets.all(20.0),
-          itemCount: statName.length,
-          itemBuilder: (context, index) {
-            return Column(
-              children: [
-                Row(
-                  children: [
-                    SizedBox(
-                      width: 60.0,
-                      child: Text(
-                        statName[index].capitalize(),
-                        style: const TextStyle(
-                          fontSize: 15.0,
-                          color: Colors.black,
-                        ),
-                      ),
+    return Scaffold(
+      body: ListView.builder(
+        padding: const EdgeInsets.all(20.0),
+        itemCount: statName.length,
+        itemBuilder: (context, index) {
+          return Column(
+            children: [
+              Row(
+                children: [
+                  _makeSizedBox(statName[index], 100.0),
+                  _makeSizedBox(statValue[index].toString(), 50.0),
+                  SizedBox(
+                    width: 200.0,
+                    child: LinearProgressIndicator(
+                      backgroundColor: Colors.grey,
+                      color: Colors.green,
+                      minHeight: 5.0,
+                      value: statValueProgression[index],
                     ),
-                    const SizedBox(width: 50.0),
-                    SizedBox(
-                      width: 50.0,
-                      child: Text(
-                        statValue[index].toString(),
-                        style: const TextStyle(
-                          fontSize: 15.0,
-                          color: Colors.black,
-                        ),
-                      ),
-                    ),
-                    SizedBox(
-                      width: 170.0,
-                      child: LinearProgressIndicator(
-                        backgroundColor: Colors.grey,
-                        color: Colors.green,
-                        minHeight: 5.0,
-                        value: statValueProgression[index],
-                      ),
-                    ),
-                  ],
-                ),
-                const SizedBox(height: 20),
-              ],
-            );
-          },
-        ),
+                  ),
+                ],
+              ),
+              const SizedBox(height: 20),
+            ],
+          );
+        },
       ),
     );
   }
+
+  Widget _makeSizedBox(String text, double width) => SizedBox(
+        width: width,
+        child: Text(
+          text.capitalize(),
+          style: const TextStyle(
+            fontSize: 15.0,
+            color: Colors.black,
+          ),
+        ),
+      );
 }
