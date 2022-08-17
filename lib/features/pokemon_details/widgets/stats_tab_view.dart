@@ -1,19 +1,58 @@
 import 'package:flutter/material.dart';
-import 'package:pokedex/model/dto/pokemon_dto.dart';
+import 'package:pokedex/api/pokedex_api_spec/model/stats.dart';
+import 'package:pokedex/widgets/app_text_widgets.dart';
+import 'package:pokedex/widgets/spacings.dart';
 
 class StatsTabView extends StatelessWidget {
   const StatsTabView({
     super.key,
-    required this.details,
+    required this.stats,
   });
 
-  final PokemonDto details;
+  final List<Stats> stats;
 
   @override
   Widget build(BuildContext context) {
     /// TODO: This will be improved once loading is implemented
-    final stats = details.stats.isEmpty ? '' : details.stats[0].stats!.name;
+    final mediaQueryWidth = MediaQuery.of(context).size.width;
 
-    return Center(child: Text(stats));
+    return ListView.builder(
+      padding: const EdgeInsets.all(20.0),
+      itemCount: stats.length,
+      itemBuilder: (context, index) {
+        final currentStats = stats[index];
+        final statsName = currentStats.stats?.name ?? '';
+        final statsValue = currentStats.baseStat.toString();
+        final statsProgress = currentStats.baseStat / 200.0;
+
+        return Column(
+          children: [
+            Row(
+              children: [
+                SizedBox(
+                  width: mediaQueryWidth - 280.0,
+                  child: DetailText(text: statsName),
+                ),
+                const HorizontalSpace(space: 20.0),
+                SizedBox(
+                  width: mediaQueryWidth - 360.0,
+                  child: DetailText(text: statsValue),
+                ),
+                const HorizontalSpace(space: 20.0),
+                Expanded(
+                  child: LinearProgressIndicator(
+                    backgroundColor: Colors.grey,
+                    color: Colors.green,
+                    minHeight: 5.0,
+                    value: statsProgress,
+                  ),
+                ),
+              ],
+            ),
+            const VerticalSpace(space: 20.0),
+          ],
+        );
+      },
+    );
   }
 }
