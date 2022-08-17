@@ -14,19 +14,19 @@ class AboutItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    var mediaQuery = MediaQuery.of(context).size.width;
+    var mediaQueryWidth = MediaQuery.of(context).size.width;
 
     return Column(
       children: [
         Row(
           children: [
             SizedBox(
-              width: mediaQuery - 250.0,
+              width: mediaQueryWidth - 250.0,
               child: DetailText(text: itemLabel),
             ),
             const HorizontalSpace(space: 10.0),
             SizedBox(
-              width: mediaQuery - 200.0,
+              width: mediaQueryWidth - 200.0,
               child: DetailText(text: itemContent),
             ),
           ],
