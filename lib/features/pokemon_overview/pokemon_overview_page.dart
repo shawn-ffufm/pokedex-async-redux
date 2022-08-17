@@ -20,28 +20,26 @@ class PokemonOverviewPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      home: Scaffold(
-        appBar: AppBar(
-          title: const Text(str.pokedexTitle),
+    return Scaffold(
+      appBar: AppBar(
+        title: const Text(str.pokedexTitle),
+      ),
+      body: GridView.builder(
+        padding: const EdgeInsets.all(10),
+        gridDelegate: const SliverGridDelegateWithMaxCrossAxisExtent(
+          maxCrossAxisExtent: _sizeAcross,
+          childAspectRatio: _width / _heightRatio,
+          crossAxisSpacing: _width,
+          mainAxisSpacing: _width,
         ),
-        body: GridView.builder(
-          padding: const EdgeInsets.all(10),
-          gridDelegate: const SliverGridDelegateWithMaxCrossAxisExtent(
-            maxCrossAxisExtent: _sizeAcross,
-            childAspectRatio: _width / _heightRatio,
-            crossAxisSpacing: _width,
-            mainAxisSpacing: _width,
-          ),
-          itemCount: pokemons.length,
-          itemBuilder: (context, index) {
-            final pokemon = pokemons[index];
-            return PokemonTileItem(
-              pokemon: pokemon,
-              onTap: () => _onTapPokemonItem(pokemon),
-            );
-          },
-        ),
+        itemCount: pokemons.length,
+        itemBuilder: (context, index) {
+          final pokemon = pokemons[index];
+          return PokemonTileItem(
+            pokemon: pokemon,
+            onTap: () => _onTapPokemonItem(pokemon),
+          );
+        },
       ),
     );
   }
