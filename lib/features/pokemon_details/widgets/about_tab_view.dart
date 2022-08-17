@@ -10,22 +10,19 @@ class AboutTabView extends StatelessWidget {
 
   final AboutDetails aboutDetails;
 
+  /// TODO: This will be improved once loading is implemented
   @override
-  Widget build(BuildContext context) {
-    /// TODO: This will be improved once loading is implemented
-
-    return Padding(
-      padding: const EdgeInsets.all(20.0),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          for (var detail in aboutDetails.entries)
-            AboutItem(
-              itemLabel: detail.key,
-              itemContent: detail.value,
-            ),
-        ],
-      ),
-    );
-  }
+  Widget build(BuildContext context) => Padding(
+        padding: const EdgeInsets.all(20.0),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            for (var detail in aboutDetails.entries)
+              AboutItem(
+                itemLabel: detail.key,
+                itemContent: detail.value,
+              ),
+          ],
+        ),
+      );
 }

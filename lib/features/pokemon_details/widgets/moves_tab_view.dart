@@ -10,21 +10,18 @@ class MovesTabView extends StatelessWidget {
 
   final List<Moves> moves;
 
+  /// TODO: This will be improved once loading is implemented
   @override
-  Widget build(BuildContext context) {
-    /// TODO: This will be improved once loading is implemented
-
-    return SingleChildScrollView(
-      child: Padding(
-        padding: const EdgeInsets.all(20.0),
-        child: Wrap(
-          runSpacing: 5.0,
-          spacing: 5.0,
-          children: [
-            for (var details in moves) MoveItem(move: details.move!),
-          ],
+  Widget build(BuildContext context) => SingleChildScrollView(
+        child: Padding(
+          padding: const EdgeInsets.all(20.0),
+          child: Wrap(
+            runSpacing: 5.0,
+            spacing: 5.0,
+            children: [
+              for (var details in moves) MoveItem(move: details.move!),
+            ],
+          ),
         ),
-      ),
-    );
-  }
+      );
 }

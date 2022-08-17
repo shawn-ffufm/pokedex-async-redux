@@ -14,7 +14,7 @@ class AboutItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    var mediaQueryWidth = MediaQuery.of(context).size.width;
+    final mediaQueryWidth = MediaQuery.of(context).size.width;
 
     return Column(
       children: [
