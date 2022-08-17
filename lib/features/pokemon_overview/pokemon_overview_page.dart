@@ -21,9 +21,7 @@ class PokemonOverviewPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const Text(str.pokedexTitle),
-      ),
+      appBar: AppBar(title: const Text(str.pokedexTitle)),
       body: GridView.builder(
         padding: const EdgeInsets.all(10),
         gridDelegate: const SliverGridDelegateWithMaxCrossAxisExtent(

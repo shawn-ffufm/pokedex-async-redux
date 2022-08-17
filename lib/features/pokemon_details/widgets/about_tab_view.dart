@@ -19,12 +19,11 @@ class AboutTabView extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          ...aboutDetails.entries.map(
-            (detail) => AboutItem(
+          for (var detail in aboutDetails.entries)
+            AboutItem(
               itemLabel: detail.key,
               itemContent: detail.value,
             ),
-          ),
         ],
       ),
     );

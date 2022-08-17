@@ -13,22 +13,26 @@ class AboutItem extends StatelessWidget {
   final String itemContent;
 
   @override
-  Widget build(BuildContext context) => Column(
-        children: [
-          Row(
-            children: [
-              SizedBox(
-                width: MediaQuery.of(context).size.width - 250.0,
-                child: DetailText(text: itemLabel),
-              ),
-              const HorizontalSpace(space: 10.0),
-              SizedBox(
-                width: MediaQuery.of(context).size.width - 200.0,
-                child: DetailText(text: itemContent),
-              ),
-            ],
-          ),
-          const VerticalSpace(space: 20.0),
-        ],
-      );
+  Widget build(BuildContext context) {
+    var mediaQuery = MediaQuery.of(context).size.width;
+
+    return Column(
+      children: [
+        Row(
+          children: [
+            SizedBox(
+              width: mediaQuery - 250.0,
+              child: DetailText(text: itemLabel),
+            ),
+            const HorizontalSpace(space: 10.0),
+            SizedBox(
+              width: mediaQuery - 200.0,
+              child: DetailText(text: itemContent),
+            ),
+          ],
+        ),
+        const VerticalSpace(space: 20.0),
+      ],
+    );
+  }
 }

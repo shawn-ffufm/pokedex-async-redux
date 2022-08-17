@@ -21,9 +21,7 @@ class MovesTabView extends StatelessWidget {
           runSpacing: 5.0,
           spacing: 5.0,
           children: [
-            ...moves.map(
-              (detail) => MoveItem(move: detail.move!),
-            ),
+            for (var details in moves) MoveItem(move: details.move!),
           ],
         ),
       ),

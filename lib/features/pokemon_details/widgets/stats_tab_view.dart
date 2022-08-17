@@ -14,6 +14,7 @@ class StatsTabView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     /// TODO: This will be improved once loading is implemented
+    var mediaQuery = MediaQuery.of(context).size.width;
 
     return ListView.builder(
       padding: const EdgeInsets.all(20.0),
@@ -24,12 +25,12 @@ class StatsTabView extends StatelessWidget {
             Row(
               children: [
                 SizedBox(
-                  width: MediaQuery.of(context).size.width - 280.0,
-                  child: DetailText(text: stats[index].stats!.name),
+                  width: mediaQuery - 280.0,
+                  child: DetailText(text: stats[index].stats?.name ?? ''),
                 ),
                 const HorizontalSpace(space: 20.0),
                 SizedBox(
-                  width: MediaQuery.of(context).size.width - 360.0,
+                  width: mediaQuery - 360.0,
                   child: DetailText(text: stats[index].baseStat.toString()),
                 ),
                 const HorizontalSpace(space: 20.0),
