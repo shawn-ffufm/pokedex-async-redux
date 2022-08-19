@@ -23,7 +23,7 @@ class PokemonDetailsConnector extends StatelessWidget {
       onDispose: (store) => store.dispatch(ClearSelectedPokemonAction()),
       builder: (context, vm) => PokemonDetailsPage(
         pokemon: vm.pokemon,
-        onFavoritePokemon: vm.onAssignAsFavorite,
+        onAssignAsFavorite: vm.onAssignAsFavorite,
       ),
     );
   }

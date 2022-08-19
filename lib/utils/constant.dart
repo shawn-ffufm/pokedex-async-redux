@@ -5,3 +5,6 @@ const String pokemonLimit = '20';
 const String pokemonOffset = '0';
 const double imageHeight = 110.0;
 const double imageWidth = 110.0;
+const double gridWidth = 10.0;
+const double gridHeightRatio = 9.0;
+const double gridSizeAcross = 190.0;

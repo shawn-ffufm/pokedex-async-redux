@@ -13,11 +13,11 @@ class PokemonDetailsPage extends StatelessWidget {
   const PokemonDetailsPage({
     Key? key,
     required this.pokemon,
-    required this.onFavoritePokemon,
+    required this.onAssignAsFavorite,
   }) : super(key: key);
 
   final PokemonDto pokemon;
-  final OnSelectPokemon onFavoritePokemon;
+  final OnSelectPokemon onAssignAsFavorite;
 
   @override
   Widget build(BuildContext context) {
@@ -55,15 +55,10 @@ class PokemonDetailsPage extends StatelessWidget {
                       child: Padding(
                         padding: const EdgeInsets.all(8.0),
                         child: IconButton(
-                          icon: pokemon.isFavorite
-                              ? const Icon(
-                                  Icons.favorite,
-                                  color: Colors.red,
-                                )
-                              : const Icon(
-                                  Icons.favorite_border,
-                                  color: Colors.red,
-                                ),
+                          icon: Icon(
+                            pokemon.isFavorite ? Icons.favorite : Icons.favorite_border,
+                            color: Colors.red,
+                          ),
                           onPressed: () => _onTapFavoritePokemon(pokemon),
                         ),
                       ),
@@ -102,5 +97,5 @@ class PokemonDetailsPage extends StatelessWidget {
     );
   }
 
-  void _onTapFavoritePokemon(PokemonDto pokemon) => onFavoritePokemon(pokemon);
+  void _onTapFavoritePokemon(PokemonDto pokemon) => onAssignAsFavorite(pokemon);
 }

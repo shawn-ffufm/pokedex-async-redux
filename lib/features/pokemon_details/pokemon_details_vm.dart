@@ -9,10 +9,10 @@ class PokemonDetailsVmFactory extends VmFactory<AppState, PokemonDetailsConnecto
   @override
   Vm fromStore() => PokemonDetailsVm(
         pokemon: state.selectedPokemon!,
-        onAssignAsFavorite: _onFavoritePokemon,
+        onAssignAsFavorite: _onAssignAsFavorite,
       );
 
-  void _onFavoritePokemon(PokemonDto selectedPokemon) =>
+  void _onAssignAsFavorite(PokemonDto selectedPokemon) =>
       dispatch(UpdatePokemonFavoriteAction(pokemon: selectedPokemon));
 }
 
