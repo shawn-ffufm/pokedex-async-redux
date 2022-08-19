@@ -50,27 +50,24 @@ class PokemonDetailsPage extends StatelessWidget {
                 child: Column(
                   children: [
                     const SizedBox(height: 20.0),
-                    pokemon.isFavorite
-                        ? Align(
-                            alignment: Alignment.topRight,
-                            child: Padding(
-                              padding: const EdgeInsets.all(8.0),
-                              child: IconButton(
-                                icon: const Icon(Icons.favorite),
-                                onPressed: () => _onTapFavoritePokemon(pokemon),
-                              ),
-                            ),
-                          )
-                        : Align(
-                            alignment: Alignment.topRight,
-                            child: Padding(
-                              padding: const EdgeInsets.all(8.0),
-                              child: IconButton(
-                                icon: const Icon(Icons.favorite_border),
-                                onPressed: () => _onTapFavoritePokemon(pokemon),
-                              ),
-                            ),
-                          ),
+                    Align(
+                      alignment: Alignment.topRight,
+                      child: Padding(
+                        padding: const EdgeInsets.all(8.0),
+                        child: IconButton(
+                          icon: pokemon.isFavorite
+                              ? const Icon(
+                                  Icons.favorite,
+                                  color: Colors.red,
+                                )
+                              : const Icon(
+                                  Icons.favorite_border,
+                                  color: Colors.red,
+                                ),
+                          onPressed: () => _onTapFavoritePokemon(pokemon),
+                        ),
+                      ),
+                    ),
                     Text(
                       pokemonName,
                       style: const TextStyle(

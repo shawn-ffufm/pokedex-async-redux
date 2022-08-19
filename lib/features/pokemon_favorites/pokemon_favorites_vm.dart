@@ -8,20 +8,30 @@ import 'package:pokedex/utils/typedefs.dart';
 class PokemonFavoritesVmFactory extends VmFactory<AppState, PokemonFavoritesConnector> {
   @override
   Vm fromStore() => PokemonFavoritesVm(
-        favoritePokemons: state.favoritePokemons,
+        pokemons: getFavoritePokemons(),
         onSaveSelectedPokemon: _onSaveSelectedPokemon,
       );
 
   void _onSaveSelectedPokemon(PokemonDto selectedPokemon) =>
       dispatch(AssignSelectedPokemonAction(pokemon: selectedPokemon));
+
+  PokemonList? getFavoritePokemons() {
+    PokemonList? favoritePokemons = [];
+    for (var pokemon in state.pokemons) {
+      if (pokemon.isFavorite) {
+        favoritePokemons.add(pokemon);
+      }
+    }
+    return favoritePokemons;
+  }
 }
 
 class PokemonFavoritesVm extends Vm {
   PokemonFavoritesVm({
-    required this.favoritePokemons,
+    required this.pokemons,
     required this.onSaveSelectedPokemon,
-  }) : super(equals: [favoritePokemons]);
+  }) : super(equals: [pokemons]);
 
-  final PokemonList favoritePokemons;
+  final PokemonList? pokemons;
   final OnSelectPokemon onSaveSelectedPokemon;
 }

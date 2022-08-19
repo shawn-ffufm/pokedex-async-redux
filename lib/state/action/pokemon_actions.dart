@@ -9,12 +9,15 @@ import 'package:pokedex/utils/extensions.dart';
 class GetPokemonsAction extends ReduxAction<AppState> {
   @override
   Future<AppState> reduce() async {
-    if (state.pokemons.isEmpty) {
+    if (!state.hasInitiallyRequestedPokemons) {
       final pokemonResponse = await ApiService().pokemonApi.getPokemonList(k.pokemonOffset, k.pokemonLimit);
       final mappedPokemons =
           pokemonResponse.map((pokemon) => PokemonDto(pokemon: pokemon, id: pokemon.url.getPokemonId)).toList();
 
-      return state.copyWith(pokemons: mappedPokemons);
+      return state.copyWith(
+        pokemons: mappedPokemons,
+        hasInitiallyRequestedPokemons: true,
+      );
     } else {
       return state;
     }
@@ -90,48 +93,11 @@ class UpdatePokemonFavoriteAction extends ReduxAction<AppState> {
 
   @override
   AppState reduce() {
-    final PokemonDto updatedPokemon;
-    if (!pokemon.isFavorite) {
-      updatedPokemon = pokemon.copyWith(isFavorite: true);
-      dispatch(AddFavoritePokemonAction(pokemon: updatedPokemon));
-    } else {
-      updatedPokemon = pokemon.copyWith(isFavorite: false);
-      dispatch(DeleteFavoritePokemonAction(pokemon: pokemon));
-    }
+    final updatedPokemon = pokemon.copyWith(isFavorite: !pokemon.isFavorite);
 
     return state.copyWith(selectedPokemon: updatedPokemon);
   }
 
   @override
   void after() => dispatch(UpdatePokemonsAction(pokemon: state.selectedPokemon!));
-}
-
-/// Add Favorite Pokemon to list of Favorite Pokemon Action
-class AddFavoritePokemonAction extends ReduxAction<AppState> {
-  AddFavoritePokemonAction({required this.pokemon});
-
-  final PokemonDto pokemon;
-
-  @override
-  AppState reduce() {
-    final updatedFavoriteList = state.favoritePokemons.toList();
-    updatedFavoriteList.add(pokemon);
-
-    return state.copyWith(favoritePokemons: updatedFavoriteList);
-  }
-}
-
-/// Delete Favorite Pokemon to list of Favorite Pokemon Action
-class DeleteFavoritePokemonAction extends ReduxAction<AppState> {
-  DeleteFavoritePokemonAction({required this.pokemon});
-
-  final PokemonDto pokemon;
-
-  @override
-  AppState reduce() {
-    final updatedFavoriteList = state.favoritePokemons.toList();
-    updatedFavoriteList.remove(pokemon);
-
-    return state.copyWith(favoritePokemons: updatedFavoriteList);
-  }
 }

@@ -9,7 +9,7 @@ class PokemonDetailsVmFactory extends VmFactory<AppState, PokemonDetailsConnecto
   @override
   Vm fromStore() => PokemonDetailsVm(
         pokemon: state.selectedPokemon!,
-        onFavoritePokemon: _onFavoritePokemon,
+        onAssignAsFavorite: _onFavoritePokemon,
       );
 
   void _onFavoritePokemon(PokemonDto selectedPokemon) =>
@@ -19,8 +19,9 @@ class PokemonDetailsVmFactory extends VmFactory<AppState, PokemonDetailsConnecto
 class PokemonDetailsVm extends Vm {
   PokemonDetailsVm({
     required this.pokemon,
-    required this.onFavoritePokemon,
+    required this.onAssignAsFavorite,
   }) : super(equals: [pokemon]);
+
   final PokemonDto pokemon;
-  final OnSelectPokemon onFavoritePokemon;
+  final OnSelectPokemon onAssignAsFavorite;
 }

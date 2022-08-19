@@ -11,7 +11,7 @@ class PokemonFavoritesPage extends StatelessWidget {
     required this.onSaveSelectedPokemon,
   });
 
-  final PokemonList pokemons;
+  final PokemonList? pokemons;
   final OnSelectPokemon onSaveSelectedPokemon;
 
   static const double _width = 10.0;
@@ -32,9 +32,9 @@ class PokemonFavoritesPage extends StatelessWidget {
           crossAxisSpacing: _width,
           mainAxisSpacing: _width,
         ),
-        itemCount: pokemons.length,
+        itemCount: pokemons?.length,
         itemBuilder: (context, index) {
-          final pokemon = pokemons[index];
+          final pokemon = pokemons![index];
 
           return PokemonTileItem(
             pokemon: pokemon,

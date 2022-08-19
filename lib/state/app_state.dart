@@ -10,8 +10,8 @@ part 'app_state.g.dart';
 class AppState with _$AppState {
   factory AppState({
     @Default(<PokemonDto>[]) PokemonList pokemons,
-    @Default(<PokemonDto>[]) PokemonList favoritePokemons,
     @Default(null) PokemonDto? selectedPokemon,
+    @Default(false) bool hasInitiallyRequestedPokemons,
   }) = _AppState;
 
   factory AppState.fromJson(Map<String, dynamic> json) => _$AppStateFromJson(json);
