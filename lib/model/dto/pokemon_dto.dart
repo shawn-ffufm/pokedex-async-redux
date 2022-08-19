@@ -20,6 +20,7 @@ class PokemonDto with _$PokemonDto {
     @Default(<Abilities>[]) List<Abilities> abilities,
     @Default(<Moves>[]) List<Moves> moves,
     @Default(<Stats>[]) List<Stats> stats,
+    @Default(false) bool isFavorite,
   }) = _PokemonDto;
 
   factory PokemonDto.fromJson(Map<String, dynamic> json) => _$PokemonDtoFromJson(json);
