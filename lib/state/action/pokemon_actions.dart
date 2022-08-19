@@ -8,19 +8,18 @@ import 'package:pokedex/utils/extensions.dart';
 /// This action gets the list of pokemons and transform it into a list of PokemonDto
 class GetPokemonsAction extends ReduxAction<AppState> {
   @override
-  Future<AppState> reduce() async {
-    if (!state.hasInitiallyRequestedPokemons) {
-      final pokemonResponse = await ApiService().pokemonApi.getPokemonList(k.pokemonOffset, k.pokemonLimit);
-      final mappedPokemons =
-          pokemonResponse.map((pokemon) => PokemonDto(pokemon: pokemon, id: pokemon.url.getPokemonId)).toList();
+  bool abortDispatch() => state.hasInitiallyRequestedPokemons;
 
-      return state.copyWith(
-        pokemons: mappedPokemons,
-        hasInitiallyRequestedPokemons: true,
-      );
-    } else {
-      return state;
-    }
+  @override
+  Future<AppState> reduce() async {
+    final pokemonResponse = await ApiService().pokemonApi.getPokemonList(k.pokemonOffset, k.pokemonLimit);
+    final mappedPokemons =
+        pokemonResponse.map((pokemon) => PokemonDto(pokemon: pokemon, id: pokemon.url.getPokemonId)).toList();
+
+    return state.copyWith(
+      pokemons: mappedPokemons,
+      hasInitiallyRequestedPokemons: true,
+    );
   }
 }
 
