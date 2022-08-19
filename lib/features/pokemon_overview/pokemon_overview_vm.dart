@@ -14,13 +14,9 @@ class PokemonOverviewVmFactory extends VmFactory<AppState, PokemonOverviewConnec
 
   void _onSaveSelectedPokemon(PokemonDto selectedPokemon) =>
       dispatch(AssignSelectedPokemonAction(pokemon: selectedPokemon));
-
-  /// TODO: add dispatch statement here to call getpokemons
-
 }
 
 class PokemonOverviewVm extends Vm {
-  /// TODO: add other additional fields here
   PokemonOverviewVm({
     required this.pokemons,
     required this.onSaveSelectedPokemon,

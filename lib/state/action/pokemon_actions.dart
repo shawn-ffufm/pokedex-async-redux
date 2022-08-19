@@ -8,11 +8,18 @@ import 'package:pokedex/utils/extensions.dart';
 /// This action gets the list of pokemons and transform it into a list of PokemonDto
 class GetPokemonsAction extends ReduxAction<AppState> {
   @override
+  bool abortDispatch() => state.hasInitiallyRequestedPokemons;
+
+  @override
   Future<AppState> reduce() async {
     final pokemonResponse = await ApiService().pokemonApi.getPokemonList(k.pokemonOffset, k.pokemonLimit);
     final mappedPokemons =
         pokemonResponse.map((pokemon) => PokemonDto(pokemon: pokemon, id: pokemon.url.getPokemonId)).toList();
-    return state.copyWith(pokemons: mappedPokemons);
+
+    return state.copyWith(
+      pokemons: mappedPokemons,
+      hasInitiallyRequestedPokemons: true,
+    );
   }
 }
 
@@ -75,4 +82,21 @@ class UpdatePokemonsAction extends ReduxAction<AppState> {
     final updatedPokemons = currentPokemons;
     return state.copyWith(pokemons: updatedPokemons);
   }
+}
+
+/// Action that Updates the status of isFavorite Pokemon
+class UpdatePokemonFavoriteAction extends ReduxAction<AppState> {
+  UpdatePokemonFavoriteAction({required this.pokemon});
+
+  final PokemonDto pokemon;
+
+  @override
+  AppState reduce() {
+    final updatedPokemon = pokemon.copyWith(isFavorite: !pokemon.isFavorite);
+
+    return state.copyWith(selectedPokemon: updatedPokemon);
+  }
+
+  @override
+  void after() => dispatch(UpdatePokemonsAction(pokemon: state.selectedPokemon!));
 }

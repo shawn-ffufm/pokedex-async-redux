@@ -7,14 +7,17 @@ import 'package:pokedex/model/dto/pokemon_dto.dart';
 import 'package:pokedex/utils/extensions.dart';
 import 'package:pokedex/utils/strings.dart' as str;
 import 'package:pokedex/utils/constant.dart' as k;
+import 'package:pokedex/utils/typedefs.dart';
 
 class PokemonDetailsPage extends StatelessWidget {
   const PokemonDetailsPage({
     Key? key,
     required this.pokemon,
+    required this.onAssignAsFavorite,
   }) : super(key: key);
 
   final PokemonDto pokemon;
+  final OnSelectPokemon onAssignAsFavorite;
 
   @override
   Widget build(BuildContext context) {
@@ -47,6 +50,19 @@ class PokemonDetailsPage extends StatelessWidget {
                 child: Column(
                   children: [
                     const SizedBox(height: 20.0),
+                    Align(
+                      alignment: Alignment.topRight,
+                      child: Padding(
+                        padding: const EdgeInsets.all(8.0),
+                        child: IconButton(
+                          icon: Icon(
+                            pokemon.isFavorite ? Icons.favorite : Icons.favorite_border,
+                            color: Colors.red,
+                          ),
+                          onPressed: () => _onTapFavoritePokemon(pokemon),
+                        ),
+                      ),
+                    ),
                     Text(
                       pokemonName,
                       style: const TextStyle(
@@ -80,4 +96,6 @@ class PokemonDetailsPage extends StatelessWidget {
       ),
     );
   }
+
+  void _onTapFavoritePokemon(PokemonDto pokemon) => onAssignAsFavorite(pokemon);
 }
