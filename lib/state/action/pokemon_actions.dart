@@ -92,11 +92,11 @@ class UpdatePokemonFavoriteAction extends ReduxAction<AppState> {
   AppState reduce() {
     final PokemonDto updatedPokemon;
     if (!pokemon.isFavorite) {
-      dispatch(AddFavoritePokemonAction(pokemon: pokemon));
       updatedPokemon = pokemon.copyWith(isFavorite: true);
+      dispatch(AddFavoritePokemonAction(pokemon: updatedPokemon));
     } else {
-      dispatch(DeleteFavoritePokemonAction(pokemon: pokemon));
       updatedPokemon = pokemon.copyWith(isFavorite: false);
+      dispatch(DeleteFavoritePokemonAction(pokemon: pokemon));
     }
 
     return state.copyWith(selectedPokemon: updatedPokemon);
