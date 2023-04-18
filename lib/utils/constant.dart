@@ -8,4 +8,5 @@ const double imageWidth = 110.0;
 const double gridWidth = 10.0;
 const double gridHeightRatio = 9.0;
 const double gridSizeAcross = 190.0;
+const double sampleOneDotOne = 1.1;
 const double sampleOne = 1.0;
